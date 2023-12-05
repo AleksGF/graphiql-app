@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
 // TODO implement Main Page
-const MainPage: FC = () => <main>Main Page</main>;
+const MainPage = (): React.ReactElement | null => {
 
 export default MainPage;
