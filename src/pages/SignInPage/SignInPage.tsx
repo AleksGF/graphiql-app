@@ -1,6 +1,4 @@
-import { FC } from 'react';
-
 // TODO implement SignIn Page
-const SignInPage: FC = () => <main>SignIn Page</main>;
-
-export default SignInPage;
+export default function SignInPage() {
+  return <main>SignIn Page</main>;
+}
