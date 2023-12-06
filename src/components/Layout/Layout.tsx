@@ -1,8 +1,7 @@
-import { type FC } from 'react';
 import { Outlet } from 'react-router';
 import { Counter } from '@/components/Counter/Counter';
 
-const Layout: FC = () => {
+export default function Layout() {
   return (
     <div className="App">
       <Outlet />
@@ -52,6 +51,4 @@ const Layout: FC = () => {
       </header>
     </div>
   );
-};
-
-export default Layout;
+}
