@@ -15,7 +15,7 @@ import { Logo } from '@/components';
 
 const HeaderStyled = styled('header')({
   display: 'flex',
-  padding: '1em 1em',
+  padding: '1em',
   justifyContent: 'space-between',
 });
 
