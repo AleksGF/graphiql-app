@@ -5,9 +5,16 @@ import MainPage from '@/pages/MainPage/MainPage';
 import SignInPage from '@/pages/SignInPage/SignInPage';
 import SignUpPage from '@/pages/SignUpPage/SignUpPage';
 
+enum RoutePaths {
+  IndexPage = '/',
+  MainPage = '/main',
+  SignInPage = '/signin',
+  SignUpPage = '/signup',
+}
+
 export const routes: RouteObject[] = [
   {
-    path: '/',
+    path: RoutePaths.IndexPage,
     element: <App />,
     children: [
       {
@@ -15,15 +22,15 @@ export const routes: RouteObject[] = [
         element: <WelcomePage />,
       },
       {
-        path: 'main',
+        path: RoutePaths.MainPage,
         element: <MainPage />,
       },
       {
-        path: 'signin',
+        path: RoutePaths.SignInPage,
         element: <SignInPage />,
       },
       {
-        path: 'signup',
+        path: RoutePaths.SignUpPage,
         element: <SignUpPage />,
       },
     ],
