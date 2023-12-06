@@ -1,4 +1,5 @@
 import { styled } from '@mui/material';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 const ImageStyled = styled('img')({
@@ -9,10 +10,12 @@ type Props = {
   href: string;
 };
 
-export default function Logo({ href }: Props) {
+const Logo = memo(({ href }: Props) => {
   return (
     <Link to={href}>
       <ImageStyled src="logo.svg" alt="Logo" />
     </Link>
   );
-}
+});
+
+export default Logo;
