@@ -1,5 +1,10 @@
 import Layout from '@/components/Layout/Layout';
+import LanguageContextProvider from '@/components/context/LanguageContext/LanguageContextProvider';
 
 export default function App() {
-  return <Layout />;
+  return (
+    <LanguageContextProvider>
+      <Layout />
+    </LanguageContextProvider>
+  );
 }
