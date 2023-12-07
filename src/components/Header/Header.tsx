@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { ColorModeContext } from '@/App';
+import React, { useState } from 'react';
+import { useColorModeContext } from '@/components/context/ColorModeContext/ColorModeContext';
 import { DarkMode, Language, LightMode } from '@mui/icons-material';
 import {
   Button,
@@ -21,7 +21,7 @@ const HeaderStyled = styled('header')({
 
 export default function Header() {
   const theme = useTheme();
-  const colorMode = useContext(ColorModeContext);
+  const colorMode = useColorModeContext();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = !!anchorEl;
