@@ -1,11 +1,15 @@
 import React, { useMemo, useState } from 'react';
-import { Layout } from '@/components';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {
   CssBaseline,
   ThemeProvider,
   createTheme,
   useMediaQuery,
 } from '@mui/material';
+import LanguageContextProvider from '@/components/context/LanguageContext/LanguageContextProvider';
+import { routes } from '@/routes/routes';
+
+const router = createBrowserRouter(routes);
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
@@ -38,11 +42,13 @@ export default function App() {
   );
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Layout />
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <LanguageContextProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </LanguageContextProvider>
   );
 }
