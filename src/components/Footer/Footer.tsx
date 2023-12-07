@@ -9,6 +9,13 @@ const FooterStyled = styled('footer')({
   justifyContent: 'center',
 });
 
+const GithubLinksStyled = styled(Link)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  margin: '0 5px',
+});
+
 const ICONS_SIZE = 24;
 
 const Footer = memo(() => {
@@ -18,23 +25,31 @@ const Footer = memo(() => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'space-around',
           }}
         >
-          <Link href={'https://github.com/AleksGF/graphiql-app'}>
+          <GithubLinksStyled href={'https://github.com/DanilBogdanov'}>
             <GitHubIcon sx={{ fontSize: ICONS_SIZE }} />
-          </Link>
-          <Link href={'https://rs.school/react/'}>
-            <RsLogo height={`${ICONS_SIZE}px`} />
-          </Link>
+            Danil Bogdanov
+          </GithubLinksStyled>
+          <GithubLinksStyled href={'https://github.com/AleksGF'}>
+            <GitHubIcon sx={{ fontSize: ICONS_SIZE }} />
+            Oleksiy Chuguyenko
+          </GithubLinksStyled>
+          <GithubLinksStyled href={'https://github.com/severgun'}>
+            <GitHubIcon sx={{ fontSize: ICONS_SIZE }} />
+            Sergey Vergun
+          </GithubLinksStyled>
         </Box>
         <Typography>2023 Lazy Uploads RS School Team</Typography>
+        <Link href={'https://rs.school/react/'}>
+          <RsLogo height={`${ICONS_SIZE}px`} />
+        </Link>
       </Box>
     </FooterStyled>
   );
