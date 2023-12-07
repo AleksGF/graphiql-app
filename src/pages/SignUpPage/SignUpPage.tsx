@@ -17,7 +17,7 @@ export default function SignUpPage() {
     }
   }, [navigate, user]);
 
-  const handleLogin = async (email: string, pass: string) => {
+  const handleSubmit = async (email: string, pass: string) => {
     const auth = getAuth();
 
     try {
@@ -34,7 +34,7 @@ export default function SignUpPage() {
   return (
     <main>
       <h2>Registration</h2>
-      <UserForm onSubmit={handleLogin} />
+      <UserForm onSubmit={handleSubmit} />
     </main>
   );
 }

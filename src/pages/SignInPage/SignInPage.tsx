@@ -17,7 +17,7 @@ export default function SignInPage() {
     }
   }, [navigate, user]);
 
-  const handleLogin = async (email: string, pass: string) => {
+  const handleSubmit = async (email: string, pass: string) => {
     const auth = getAuth();
 
     try {
@@ -34,7 +34,7 @@ export default function SignInPage() {
   return (
     <main>
       <h2>Login</h2>
-      <UserForm onSubmit={handleLogin} />
+      <UserForm onSubmit={handleSubmit} />
     </main>
   );
 }
