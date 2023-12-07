@@ -4,6 +4,7 @@ type FormProps = {
   onSubmit: (email: string, pass: string) => void;
 };
 
+// TODO Implement Client-side validation
 export default function Form({ onSubmit }: FormProps) {
   const [email, setEmail] = useState<string>('');
   const [pass, setPass] = useState<string>('');
