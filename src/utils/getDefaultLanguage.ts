@@ -17,5 +17,5 @@ export const getDefaultLanguage = (): Langs => {
     '',
   );
 
-  return resultLanguage !== '' ? resultLanguage : Langs.EN;
+  return resultLanguage || Langs.EN;
 };
