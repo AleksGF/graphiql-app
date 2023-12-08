@@ -1,14 +1,18 @@
 import { ProfileCard } from '@/components';
+import { useLanguageContext } from '@/components/context';
+import { LANGUAGES } from '@/constants/dictionaries';
 import { Box, Container, Typography, styled } from '@mui/material';
 
 const GRAPHQL_MAIN_COLOR = '#E10098';
 
+// TODO: Split localized strings to wrap them in tags.
 const TitleStyled = styled('span')({
   color: GRAPHQL_MAIN_COLOR,
 });
 
-// TODO Add team members info
 export default function WelcomePage() {
+  const { language } = useLanguageContext();
+
   return (
     <main>
       <Container>
@@ -26,7 +30,7 @@ export default function WelcomePage() {
               fontSize: '2.5em',
             }}
           >
-            Welcome to our <TitleStyled>GraphiQL</TitleStyled> clone
+            {LANGUAGES[language].TITLE_WELCOME}
           </Typography>
         </Box>
         <Box
@@ -44,9 +48,7 @@ export default function WelcomePage() {
               fontSize: '2em',
             }}
           >
-            This project is a final task of React Course by The Rolling Scopes
-            School.
-            <br /> It is an interactive in-browser GraphQL IDE/playground.
+            {LANGUAGES[language].TEXT_WELCOME}
           </Typography>
         </Box>
 
@@ -60,7 +62,7 @@ export default function WelcomePage() {
               fontSize: '1.5em',
             }}
           >
-            Our Team
+            {LANGUAGES[language].TEXT_OUR_TEAM}
           </Typography>
           <Box
             sx={{
@@ -71,33 +73,27 @@ export default function WelcomePage() {
             <ProfileCard
               imgSrc={'placeholder-man-1.jpg'}
               imgAlt={'Man photo'}
-              personName={'Danil Bogdanov'}
-              occupation={'Lorem ipsum dolor sit'}
-              description={
-                'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.'
-              }
+              personName={LANGUAGES[language].MEMBER_1_NAME}
+              occupation={LANGUAGES[language].MEMBER_1_OCCUPATION}
+              description={LANGUAGES[language].MEMBER_1_DESC}
               href={'https://github.com/DanilBogdanov'}
             />
 
             <ProfileCard
               imgSrc={'placeholder-man-2.jpg'}
               imgAlt={'Man photo'}
-              personName={'Oleksiy Chuguyenko'}
-              occupation={'Lorem ipsum dolor sit'}
-              description={
-                'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.'
-              }
+              personName={LANGUAGES[language].MEMBER_2_NAME}
+              occupation={LANGUAGES[language].MEMBER_2_OCCUPATION}
+              description={LANGUAGES[language].MEMBER_2_DESC}
               href={'https://github.com/AleksGF'}
             />
 
             <ProfileCard
               imgSrc={'placeholder-man-3.jpg'}
               imgAlt={'Man photo'}
-              personName={'Sergey Vergun'}
-              occupation={'HPC System Administrator'}
-              description={
-                'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.'
-              }
+              personName={LANGUAGES[language].MEMBER_3_NAME}
+              occupation={LANGUAGES[language].MEMBER_3_OCCUPATION}
+              description={LANGUAGES[language].MEMBER_3_DESC}
               href={'https://github.com/severgun'}
             />
           </Box>
