@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { memo } from 'react';
 
-const IMAGE_SIZE = 300;
+const IMAGE_SIZE = 250;
 
 interface ProfileCardProps {
   imgSrc: string;

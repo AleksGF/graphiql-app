@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Box, Link, Typography, styled } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { RsLogo } from '..';
+import { RsLogo } from '@/components';
 
 const FooterStyled = styled('footer')({
   display: 'flex',
@@ -9,12 +9,13 @@ const FooterStyled = styled('footer')({
   justifyContent: 'center',
 });
 
-const GithubLinksStyled = styled(Link)({
+const GithubLinksStyled = styled(Link)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  margin: '0 5px',
-});
+  margin: '1em 0.3em 0.3em',
+  color: theme.palette.text.primary,
+}));
 
 const ICONS_SIZE = 24;
 

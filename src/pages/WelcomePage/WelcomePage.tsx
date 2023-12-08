@@ -65,7 +65,7 @@ export default function WelcomePage() {
           <Box
             sx={{
               display: 'flex',
-              justifyContent: 'space-between',
+              justifyContent: 'space-around',
             }}
           >
             <ProfileCard
