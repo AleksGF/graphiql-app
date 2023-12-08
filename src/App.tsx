@@ -1,5 +1,9 @@
+import { useEffect } from 'react';
 import React, { useMemo, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { setUser } from './store/reducers/userSlice';
+import { useAuthState } from './hooks/auth';
+import { useAppDispatch } from './hooks/hooks';
 import {
   CssBaseline,
   ThemeProvider,
@@ -8,6 +12,7 @@ import {
 } from '@mui/material';
 import LanguageContextProvider from '@/components/context/LanguageContext/LanguageContextProvider';
 import { routes } from '@/routes/routes';
+import '@/services/firebaseInit';
 
 const router = createBrowserRouter(routes);
 
@@ -16,6 +21,13 @@ export const ColorModeContext = React.createContext({
 });
 
 export default function App() {
+  const dispatch = useAppDispatch();
+  const [user] = useAuthState();
+
+  useEffect(() => {
+    dispatch(setUser(user));
+  }, [dispatch, user]);
+
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
   const [mode, setMode] = useState<'light' | 'dark'>(
