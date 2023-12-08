@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useColorModeContext } from '@/components/context/ColorModeContext/ColorModeContext';
+import { useColorModeContext } from '@/components/context';
 import { DarkMode, Language, LightMode } from '@mui/icons-material';
 import {
   Button,
