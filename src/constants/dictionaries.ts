@@ -8,6 +8,7 @@ enum Keys {
   TEXT_404 = 'TEXT_404',
   GO_TO = 'GO_TO',
   HOME_PAGE = 'HOME_PAGE',
+  ERROR_MESSAGE = 'ERROR_MESSAGE',
   SEARCH = 'SEARCH',
 }
 
@@ -19,6 +20,7 @@ const EN: Dictionary = {
   [Keys.TEXT_404]: 'Page you are looking for not found',
   [Keys.GO_TO]: 'Go to',
   [Keys.HOME_PAGE]: 'Home Page',
+  [Keys.ERROR_MESSAGE]: 'Something went wrong...',
   [Keys.SEARCH]: 'Search',
 };
 
@@ -27,6 +29,7 @@ const RU: Dictionary = {
   [Keys.TEXT_404]: 'Запрашиваемая страница не найдена',
   [Keys.GO_TO]: 'Перейти на',
   [Keys.HOME_PAGE]: 'Домашнюю страницу',
+  [Keys.ERROR_MESSAGE]: 'Что-то пошло не так...',
   [Keys.SEARCH]: 'Искать',
 };
 
