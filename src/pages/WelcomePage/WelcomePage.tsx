@@ -1,4 +1,5 @@
 import { styled } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 // TODO implement Welcome Page
 const MainStyled = styled('main')({
@@ -6,5 +7,9 @@ const MainStyled = styled('main')({
 });
 
 export default function WelcomePage() {
-  return <MainStyled>Welcome Page</MainStyled>;
+  return (
+    <MainStyled>
+      Welcome Page <Link to={'/some-bad-route'}>Bad route</Link>
+    </MainStyled>
+  );
 }
