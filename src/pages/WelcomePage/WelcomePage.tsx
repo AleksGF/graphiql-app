@@ -1,14 +1,9 @@
 import { ProfileCard } from '@/components';
 import { useLanguageContext } from '@/components/context';
 import { LANGUAGES } from '@/constants/dictionaries';
-import { Box, Container, Typography, styled } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 
-const GRAPHQL_MAIN_COLOR = '#E10098';
-
-// TODO: Split localized strings to wrap them in tags.
-const TitleStyled = styled('span')({
-  color: GRAPHQL_MAIN_COLOR,
-});
+// TODO: Split localized strings to wrap them in tags. TitleStyled
 
 export default function WelcomePage() {
   const { language } = useLanguageContext();
