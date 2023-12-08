@@ -4,7 +4,7 @@ export enum Langs {
 }
 
 enum Keys {
-  TITTLE_404 = 'TITTLE_404',
+  TITLE_404 = 'TITLE_404',
   TEXT_404 = 'TEXT_404',
   GO_TO = 'GO_TO',
   HOME_PAGE = 'HOME_PAGE',
@@ -30,7 +30,7 @@ type Dictionaries = Record<keyof typeof Langs, Dictionary>;
 // TODO Add team members info with correct translation
 // TODO Rephrase welcome title and text
 const EN: Dictionary = {
-  [Keys.TITTLE_404]: '404 - Not Found',
+  [Keys.TITLE_404]: '404 - Not Found',
   [Keys.TEXT_404]: 'Page you are looking for not found',
   [Keys.GO_TO]: 'Go to',
   [Keys.HOME_PAGE]: 'Home Page',
@@ -55,7 +55,7 @@ const EN: Dictionary = {
 };
 
 const RU: Dictionary = {
-  [Keys.TITTLE_404]: '404 - Страница не найдена',
+  [Keys.TITLE_404]: '404 - Страница не найдена',
   [Keys.TEXT_404]: 'Запрашиваемая страница не найдена',
   [Keys.GO_TO]: 'Перейти на',
   [Keys.HOME_PAGE]: 'Домашнюю страницу',

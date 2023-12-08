@@ -29,7 +29,7 @@ export default function Custom404Page() {
           textAlign: 'center',
         }}
       >
-        {LANGUAGES[language].TITTLE_404}
+        {LANGUAGES[language].TITLE_404}
       </Typography>
       <Typography paragraph={true} sx={{ textAlign: 'center' }}>
         {LANGUAGES[language].TEXT_404}
