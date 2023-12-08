@@ -4,6 +4,7 @@ import WelcomePage from '@/pages/WelcomePage/WelcomePage';
 import MainPage from '@/pages/MainPage/MainPage';
 import SignInPage from '@/pages/SignInPage/SignInPage';
 import SignUpPage from '@/pages/SignUpPage/SignUpPage';
+import Custom404Page from '@/pages/404';
 
 export enum RoutePaths {
   IndexPage = '/',
@@ -39,7 +40,6 @@ export const routes: RouteObject[] = [
   },
   {
     path: '*',
-    // TODO add 404 page
-    element: <div>404 - Not Found</div>,
+    element: <Custom404Page />,
   },
 ];
