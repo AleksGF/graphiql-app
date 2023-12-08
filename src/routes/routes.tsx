@@ -1,5 +1,5 @@
 import type { RouteObject } from 'react-router';
-import App from '@/App';
+import Layout from '@/components/Layout/Layout';
 import WelcomePage from '@/pages/WelcomePage/WelcomePage';
 import MainPage from '@/pages/MainPage/MainPage';
 import SignInPage from '@/pages/SignInPage/SignInPage';
@@ -15,7 +15,7 @@ export enum RoutePaths {
 export const routes: RouteObject[] = [
   {
     path: RoutePaths.IndexPage,
-    element: <App />,
+    element: <Layout />,
     children: [
       {
         index: true,
