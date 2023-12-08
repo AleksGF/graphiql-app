@@ -1,26 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import UserForm from '@/components/forms/userForm/UserForm';
-import { useAppDispatch } from '@/hooks/hooks';
-import { setUser } from '@/store/reducers/userSlice';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { RoutePaths } from '@/routes/routes';
+import { signUp } from '@/services/authService';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const handleSubmit = async (email: string, pass: string) => {
-    const auth = getAuth();
-
     try {
-      const { user } = await createUserWithEmailAndPassword(auth, email, pass);
-
-      if (user.email) {
-        dispatch(setUser({ email: user.email, id: user.uid }));
-        navigate(RoutePaths.MainPage);
-      }
+      await signUp(email, pass);
+      navigate(RoutePaths.MainPage);
     } catch (e) {
-      console.log(e); // Implement user friendly message
+      console.log(e); // TODO Implement user friendly message
     }
   };
 
