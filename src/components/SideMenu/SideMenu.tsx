@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { CSSObject, styled, Theme } from '@mui/material/styles';
 import { ClickAwayListener } from '@mui/base';
 import MuiList from '@mui/material/List';
@@ -64,7 +64,7 @@ const List = styled(MuiList)(({ theme }) => ({
   width: closedMixin(theme).width,
 }));
 
-export default function SideMenu() {
+function SideMenu() {
   const { language } = useLanguageContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -113,3 +113,5 @@ export default function SideMenu() {
     </ClickAwayListener>
   );
 }
+
+export default memo(SideMenu);

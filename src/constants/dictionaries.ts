@@ -13,6 +13,8 @@ enum Keys {
   TOOLTIP_HIDE_DOC = 'TOOLTIP_HIDE_DOC',
   TOOLTIP_EXECUTE = 'TOOLTIP_EXECUTE',
   TOOLTIP_PRETTIFY = 'TOOLTIP_PRETTIFY',
+  QUERY_VARIABLES_TITLE = 'QUERY_VARIABLES_TITLE',
+  QUERY_HEADERS_TITLE = 'QUERY_HEADERS_TITLE',
   SEARCH = 'SEARCH',
 }
 
@@ -29,6 +31,8 @@ const EN: Dictionary = {
   [Keys.TOOLTIP_HIDE_DOC]: 'Hide documentation',
   [Keys.TOOLTIP_EXECUTE]: 'Execute query',
   [Keys.TOOLTIP_PRETTIFY]: 'Prettify query',
+  [Keys.QUERY_VARIABLES_TITLE]: 'Variables',
+  [Keys.QUERY_HEADERS_TITLE]: 'Headers',
   [Keys.SEARCH]: 'Search',
 };
 
@@ -42,6 +46,8 @@ const RU: Dictionary = {
   [Keys.TOOLTIP_HIDE_DOC]: 'Скрыть документацию',
   [Keys.TOOLTIP_EXECUTE]: 'Выполнить запрос',
   [Keys.TOOLTIP_PRETTIFY]: 'Отформатировать запрос',
+  [Keys.QUERY_VARIABLES_TITLE]: 'Переменные',
+  [Keys.QUERY_HEADERS_TITLE]: 'Заголовки',
   [Keys.SEARCH]: 'Искать',
 };
 
