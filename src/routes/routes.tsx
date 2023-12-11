@@ -5,6 +5,7 @@ import MainPage from '@/pages/MainPage/MainPage';
 import SignInPage from '@/pages/SignInPage/SignInPage';
 import SignUpPage from '@/pages/SignUpPage/SignUpPage';
 import Custom404Page from '@/pages/404';
+import CustomErrorPage from '@/pages/error';
 import WithAuthorizedAccess from '@/HOC/WithAuthorizedAccess';
 import WithAnonymousAccess from '@/HOC/WithAnonymousAccess';
 
@@ -49,8 +50,7 @@ export const routes: RouteObject[] = [
         ),
       },
     ],
-    // TODO add ErrorPage
-    errorElement: <div>Error</div>,
+    errorElement: <CustomErrorPage />,
   },
   {
     path: '*',

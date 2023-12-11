@@ -1,10 +1,14 @@
-import { Link } from 'react-router-dom';
+import { styled } from '@mui/material';
+
+const MainStyled = styled('main')({
+  flex: 1,
+});
 
 // TODO implement Welcome Page
 export default function WelcomePage() {
   return (
-    <main>
-      Welcome Page <Link to={'/some-bad-rout'}>Bad rout</Link>
-    </main>
+    <MainStyled>
+      Welcome Page
+    </MainStyled>
   );
 }
