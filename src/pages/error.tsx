@@ -29,7 +29,7 @@ export default function CustomErrorPage() {
           textAlign: 'center',
         }}
       >
-        {LANGUAGES[language].TITTLE_ERROR}
+        {LANGUAGES[language].TITLE_ERROR}
       </Typography>
       <Typography paragraph={true} sx={{ textAlign: 'center' }}>
         {LANGUAGES[language].ERROR_MESSAGE}
