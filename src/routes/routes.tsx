@@ -5,6 +5,7 @@ import MainPage from '@/pages/MainPage/MainPage';
 import SignInPage from '@/pages/SignInPage/SignInPage';
 import SignUpPage from '@/pages/SignUpPage/SignUpPage';
 import Custom404Page from '@/pages/404';
+import CustomErrorPage from '@/pages/error';
 
 export enum RoutePaths {
   IndexPage = '/',
@@ -35,8 +36,7 @@ export const routes: RouteObject[] = [
         element: <SignUpPage />,
       },
     ],
-    // TODO add ErrorPage or wrap app in ErrorBoundary
-    errorElement: <div>Error</div>,
+    errorElement: <CustomErrorPage />,
   },
   {
     path: '*',
