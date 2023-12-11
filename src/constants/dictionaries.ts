@@ -11,6 +11,7 @@ enum Keys {
   ERROR_MESSAGE = 'ERROR_MESSAGE',
   SEARCH = 'SEARCH',
   TITLE_WELCOME = 'TITLE_WELCOME',
+  TITLE_WELCOME_2 = 'TITLE_WELCOME_2',
   TEXT_WELCOME = 'TEXT_WELCOME',
   TEXT_OUR_TEAM = 'TEXT_OUR_TEAM',
   MEMBER_1_NAME = 'MEMBER_1_NAME',
@@ -36,7 +37,8 @@ const EN: Dictionary = {
   [Keys.HOME_PAGE]: 'Home Page',
   [Keys.ERROR_MESSAGE]: 'Something went wrong...',
   [Keys.SEARCH]: 'Search',
-  [Keys.TITLE_WELCOME]: 'Welcome to our GraphiQL clone',
+  [Keys.TITLE_WELCOME]: 'Welcome',
+  [Keys.TITLE_WELCOME_2]: "It's our clone of ",
   [Keys.TEXT_WELCOME]:
     'This project is a final task of React Course by The Rolling Scopes School. It is an interactive in-browser GraphQL playground.',
   [Keys.TEXT_OUR_TEAM]: 'Our Team',
@@ -61,7 +63,8 @@ const RU: Dictionary = {
   [Keys.HOME_PAGE]: 'Домашнюю страницу',
   [Keys.ERROR_MESSAGE]: 'Что-то пошло не так...',
   [Keys.SEARCH]: 'Искать',
-  [Keys.TITLE_WELCOME]: 'Добро пожаловать, это наш клон GraphiQL',
+  [Keys.TITLE_WELCOME]: 'Добро пожаловать',
+  [Keys.TITLE_WELCOME_2]: 'Это наш клон ',
   [Keys.TEXT_WELCOME]:
     'Этот проект является финальным заданием React Course от The Rolling Scopes School. Он представляет собой интерактивную GraphQL песочницу.',
   [Keys.TEXT_OUR_TEAM]: 'Наша команда',
