@@ -92,7 +92,7 @@ const RU: Dictionary = {
   [Keys.MEMBER_3_DESC]:
     'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
   [Keys.BUTTON_SIGNIN]: 'Войти',
-  [Keys.BUTTON_SIGNUP]: 'Зарегистрироваться',
+  [Keys.BUTTON_SIGNUP]: 'Регистрация',
   [Keys.BUTTON_SIGNOUT]: 'Выйти',
   [Keys.BUTTON_MAIN]: 'Главная',
 };
