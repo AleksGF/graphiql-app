@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface AppViewState {
+export interface AppViewState {
   isDocDrawerOpen: boolean;
   isEditorAccordionOpen: boolean;
   activeEditorTab: number;

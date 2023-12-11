@@ -6,9 +6,5 @@ const MainStyled = styled('main')({
 
 // TODO implement Welcome Page
 export default function WelcomePage() {
-  return (
-    <MainStyled>
-      Welcome Page
-    </MainStyled>
-  );
+  return <MainStyled>Welcome Page</MainStyled>;
 }

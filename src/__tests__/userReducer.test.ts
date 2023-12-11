@@ -1,6 +1,5 @@
-import reducer, { setUser } from '@/store/reducers/userSlice';
+import reducer, { setUser, UserState } from '@/store/reducers/userSlice';
 import { User } from '@/types/user';
-import { UserState } from '@/store/reducers/userSlice';
 
 const user: User = {
   email: 'some@email.co',

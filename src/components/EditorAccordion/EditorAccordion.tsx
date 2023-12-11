@@ -1,4 +1,9 @@
-import React, { ReactElement, SyntheticEvent, useMemo } from 'react';
+import React, {
+  ReactElement,
+  SyntheticEvent,
+  useCallback,
+  useMemo,
+} from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
   setActiveEditorTab,
@@ -71,9 +76,9 @@ export default function EditorAccordion() {
   return (
     <Accordion
       expanded={isEditorAccordionOpen}
-      onClick={() => {
+      onClick={useCallback(() => {
         return;
-      }}
+      }, [])}
     >
       <AccordionSummary
         sx={{ cursor: 'unset !important' }}
