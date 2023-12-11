@@ -6,6 +6,8 @@ import SignInPage from '@/pages/SignInPage/SignInPage';
 import SignUpPage from '@/pages/SignUpPage/SignUpPage';
 import Custom404Page from '@/pages/404';
 import CustomErrorPage from '@/pages/error';
+import WithAuthorizedAccess from '@/HOC/WithAuthorizedAccess';
+import WithAnonymousAccess from '@/HOC/WithAnonymousAccess';
 
 export enum RoutePaths {
   IndexPage = '/',
@@ -25,15 +27,27 @@ export const routes: RouteObject[] = [
       },
       {
         path: RoutePaths.MainPage,
-        element: <MainPage />,
+        element: (
+          <WithAuthorizedAccess>
+            <MainPage />
+          </WithAuthorizedAccess>
+        ),
       },
       {
         path: RoutePaths.SignInPage,
-        element: <SignInPage />,
+        element: (
+          <WithAnonymousAccess>
+            <SignInPage />
+          </WithAnonymousAccess>
+        ),
       },
       {
         path: RoutePaths.SignUpPage,
-        element: <SignUpPage />,
+        element: (
+          <WithAnonymousAccess>
+            <SignUpPage />
+          </WithAnonymousAccess>
+        ),
       },
     ],
     errorElement: <CustomErrorPage />,
