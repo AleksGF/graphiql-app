@@ -17,12 +17,14 @@ const RsLogo = memo(({ height = '24px' }: Props) => {
       src="rs_school_js_lighter.svg"
       alt="RS School Logo"
       height={height}
+      data-testid={'rslogo_light'}
     />
   ) : (
     <RsLogoStyled
       src="rs_school_js_darker.svg"
       alt="RS School Logo"
       height={height}
+      data-testid={'rslogo_dark'}
     />
   );
 });

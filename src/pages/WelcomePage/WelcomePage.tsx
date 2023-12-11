@@ -14,6 +14,7 @@ import {
 
 const GraphQLColor = '#E10098';
 
+// TODO implement Welcome Page
 export default function WelcomePage() {
   const { language } = useLanguageContext();
   const [user] = useAuthState();

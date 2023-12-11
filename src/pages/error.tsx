@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { Container } from '@mui/material';
 import { Typography } from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import { useLanguageContext } from '@/components/context';
+import { useLanguageContext } from '@/components/context/LanguageContext/LanguageContext';
 import { RoutePaths } from '@/routes/routes';
 import { LANGUAGES } from '@/constants/dictionaries';
 
-export default function Custom404Page() {
+export default function CustomErrorPage() {
   const { language } = useLanguageContext();
 
   return (
@@ -29,10 +29,10 @@ export default function Custom404Page() {
           textAlign: 'center',
         }}
       >
-        {LANGUAGES[language].TITLE_404}
+        {LANGUAGES[language].TITLE_ERROR}
       </Typography>
       <Typography paragraph={true} sx={{ textAlign: 'center' }}>
-        {LANGUAGES[language].TEXT_404}
+        {LANGUAGES[language].ERROR_MESSAGE}
       </Typography>
       <Typography paragraph={true} sx={{ textAlign: 'center' }}>
         {LANGUAGES[language].GO_TO}{' '}
