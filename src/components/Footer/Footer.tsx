@@ -36,15 +36,12 @@ const Footer = memo(() => {
         >
           <GithubLinksStyled href={'https://github.com/DanilBogdanov'}>
             <GitHubIcon sx={{ fontSize: ICONS_SIZE }} />
-            Danil Bogdanov
           </GithubLinksStyled>
           <GithubLinksStyled href={'https://github.com/AleksGF'}>
             <GitHubIcon sx={{ fontSize: ICONS_SIZE }} />
-            Oleksiy Chuguyenko
           </GithubLinksStyled>
           <GithubLinksStyled href={'https://github.com/severgun'}>
             <GitHubIcon sx={{ fontSize: ICONS_SIZE }} />
-            Sergey Vergun
           </GithubLinksStyled>
         </Box>
         <Typography>2023 Lazy Uploads RS School Team</Typography>
