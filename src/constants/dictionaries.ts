@@ -23,6 +23,10 @@ enum Keys {
   MEMBER_3_NAME = 'MEMBER_3_NAME',
   MEMBER_3_OCCUPATION = 'MEMBER_3_OCCUPATION',
   MEMBER_3_DESC = 'MEMBER_3_DESC',
+  BUTTON_SIGNIN = 'BUTTON_SIGNIN',
+  BUTTON_SIGNUP = 'BUTTON_SIGNUP',
+  BUTTON_SIGNOUT = 'BUTTON_SIGNOUT',
+  BUTTON_MAIN = 'BUTTON_MAIN',
 }
 
 export type Dictionary = Record<keyof typeof Keys, string>;
@@ -54,6 +58,10 @@ const EN: Dictionary = {
   [Keys.MEMBER_3_OCCUPATION]: 'HPC System Administrator',
   [Keys.MEMBER_3_DESC]:
     'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+  [Keys.BUTTON_SIGNIN]: 'Sign In',
+  [Keys.BUTTON_SIGNUP]: 'Sign Up',
+  [Keys.BUTTON_SIGNOUT]: 'Sign Out',
+  [Keys.BUTTON_MAIN]: 'Main',
 };
 
 const RU: Dictionary = {
@@ -80,6 +88,10 @@ const RU: Dictionary = {
   [Keys.MEMBER_3_OCCUPATION]: 'HPC Системный администратор',
   [Keys.MEMBER_3_DESC]:
     'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+  [Keys.BUTTON_SIGNIN]: 'Войти',
+  [Keys.BUTTON_SIGNUP]: 'Зарегистрироваться',
+  [Keys.BUTTON_SIGNOUT]: 'Выйти',
+  [Keys.BUTTON_MAIN]: 'Главная',
 };
 
 export const LANGUAGES: Dictionaries = { EN, RU };

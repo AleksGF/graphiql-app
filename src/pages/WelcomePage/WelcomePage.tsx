@@ -1,20 +1,60 @@
 import { ProfileCard } from '@/components';
 import { useLanguageContext } from '@/components/context';
 import { LANGUAGES } from '@/constants/dictionaries';
-import { Box, Container, Typography, styled } from '@mui/material';
+import { useAuthState } from '@/hooks/auth';
+import { RoutePaths } from '@/routes/routes';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Container,
+  Typography,
+  styled,
+} from '@mui/material';
 
-const GraphiQLColor = '#E10098';
+const GraphQLColor = '#E10098';
 
 export default function WelcomePage() {
   const { language } = useLanguageContext();
+  const [user] = useAuthState();
 
   const SpanStyled = styled('span')({
-    color: GraphiQLColor,
+    color: GraphQLColor,
   });
 
+  // TODO Swap 'Sign in' button to 'Main' and 'Sign Up' to 'Log Out' if user logged in.
+  // If user must be redirected to Main when logged in, how he will see Main button?
   return (
     <main>
       <Container>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'end',
+            width: '100%',
+          }}
+        >
+          {user ? (
+            <Button variant="outlined" href={RoutePaths.MainPage}>
+              {LANGUAGES[language].BUTTON_MAIN}
+            </Button>
+          ) : (
+            <>
+              <ButtonGroup variant="outlined">
+                <Button href={RoutePaths.SignInPage}>
+                  {LANGUAGES[language].BUTTON_SIGNIN}
+                </Button>
+                <Button
+                  href={RoutePaths.SignUpPage}
+                  variant="contained"
+                  disableElevation
+                >
+                  {LANGUAGES[language].BUTTON_SIGNUP}
+                </Button>
+              </ButtonGroup>
+            </>
+          )}
+        </Box>
         <Box
           sx={{
             display: 'flex',
@@ -22,7 +62,7 @@ export default function WelcomePage() {
             alignItems: 'center',
             justifyContent: 'center',
             textAlign: 'center',
-            minHeight: 'calc(100vh - 82px)',
+            minHeight: 'calc(100vh - 119px)',
           }}
         >
           <Typography
@@ -45,6 +85,7 @@ export default function WelcomePage() {
             flexDirection: 'column',
             alignItems: 'center',
             width: '100%',
+            marginBottom: '2em',
           }}
         >
           <Box
@@ -65,7 +106,11 @@ export default function WelcomePage() {
               {LANGUAGES[language].TEXT_WELCOME}
             </Typography>
           </Box>
-          <Box>
+          <Box
+            sx={{
+              width: '100%',
+            }}
+          >
             <Typography
               component={'h3'}
               variant="h2"
@@ -81,7 +126,6 @@ export default function WelcomePage() {
               sx={{
                 display: 'flex',
                 justifyContent: 'space-around',
-                width: '100%',
               }}
             >
               <ProfileCard
