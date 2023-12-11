@@ -11,6 +11,7 @@ import ResponseViewer from './ResponseViewer/ResponseViewer';
 import VariablesEditor from '@/components/VariablesEditor/VariablesEditor';
 import HeadersEditor from './HeadersEditor/HeadersEditor';
 import EditorAccordion from './EditorAccordion/EditorAccordion';
+import DocDrawer from './DocDrawer/DocDrawer';
 
 export {
   Layout,
@@ -26,4 +27,5 @@ export {
   VariablesEditor,
   HeadersEditor,
   EditorAccordion,
+  DocDrawer,
 };

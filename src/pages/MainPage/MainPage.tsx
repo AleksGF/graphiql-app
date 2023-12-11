@@ -6,6 +6,7 @@ import {
   ResponseViewer,
   EditorMenu,
   EditorAccordion,
+  DocDrawer,
 } from '@/components';
 import { Colors } from '@/constants/colors';
 
@@ -25,6 +26,7 @@ export default function MainPage() {
         },
       })}
     >
+      <DocDrawer />
       <EditorMenu />
       <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <EndpointEditor />

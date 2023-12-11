@@ -1,4 +1,9 @@
-import React, { ReactElement, SyntheticEvent, useMemo, useState } from 'react';
+import React, { ReactElement, SyntheticEvent, useMemo } from 'react';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import {
+  setActiveEditorTab,
+  toggleEditorAccordionOpen,
+} from '@/store/reducers/appViewSlice';
 import { useLanguageContext } from '@/components/context/LanguageContext/LanguageContext';
 import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
@@ -34,19 +39,19 @@ const CustomTabPanel = ({
 );
 
 export default function EditorAccordion() {
+  const dispatch = useAppDispatch();
   const { language } = useLanguageContext();
 
-  const [isAccordionExpanded, setIsAccordionExpanded] =
-    useState<boolean>(false);
-
-  const [activeTabs, setActiveTabs] = useState<number>(0);
+  const { isEditorAccordionOpen, activeEditorTab } = useAppSelector(
+    (state) => state.appView,
+  );
 
   const toggleAccordionExpanded = () => {
-    setIsAccordionExpanded((prev) => !prev);
+    dispatch(toggleEditorAccordionOpen());
   };
 
   const handleTabsChange = (e: SyntheticEvent, newValue: number): void => {
-    setActiveTabs(newValue);
+    dispatch(setActiveEditorTab(newValue));
   };
 
   const tabs = useMemo(
@@ -65,7 +70,7 @@ export default function EditorAccordion() {
 
   return (
     <Accordion
-      expanded={isAccordionExpanded}
+      expanded={isEditorAccordionOpen}
       onClick={() => {
         return;
       }}
@@ -82,11 +87,11 @@ export default function EditorAccordion() {
         id={'panel-header'}
       >
         <Tabs
-          value={activeTabs}
+          value={activeEditorTab}
           onChange={handleTabsChange}
           TabIndicatorProps={{
             style: {
-              display: isAccordionExpanded ? 'block' : 'none',
+              display: isEditorAccordionOpen ? 'block' : 'none',
             },
           }}
         >
@@ -96,14 +101,14 @@ export default function EditorAccordion() {
               label={tab.title}
               id={`tab-${index}`}
               aria-controls={`tabpanel-{index}`}
-              disabled={!isAccordionExpanded}
+              disabled={!isEditorAccordionOpen}
             />
           ))}
         </Tabs>
       </AccordionSummary>
       <AccordionDetails>
         {tabs.map((tab, index) => (
-          <CustomTabPanel key={index} value={activeTabs} index={index}>
+          <CustomTabPanel key={index} value={activeEditorTab} index={index}>
             {tab.child}
           </CustomTabPanel>
         ))}
