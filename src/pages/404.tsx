@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Container } from '@mui/material';
 import { Typography } from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import { useLanguageContext } from '@/components/context/LanguageContext/LanguageContext';
+import { useLanguageContext } from '@/components/context';
 import { RoutePaths } from '@/routes/routes';
 import { LANGUAGES } from '@/constants/dictionaries';
 

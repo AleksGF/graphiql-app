@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import LanguageContextProvider from '@/components/context/LanguageContext/LanguageContextProvider';
-import ColorModeContextProvider from '@/components/context/ColorModeContext/ColorModeContextProvider';
+import { LanguageContextProvider } from '@/components/context';
+import { ColorModeContextProvider } from '@/components/context';
 import { setUser } from './store/reducers/userSlice';
 import { useAppDispatch } from './hooks/hooks';
 import { useAuthState } from './hooks/auth';
