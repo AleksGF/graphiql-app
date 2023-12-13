@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { LanguageContext } from './LanguageContext';
+import { LanguageContext } from '@/context';
 import { getDefaultLanguage } from '@/utils/getDefaultLanguage';
 import { Langs } from '@/constants/dictionaries';
 

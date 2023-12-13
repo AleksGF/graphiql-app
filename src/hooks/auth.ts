@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getAuth, User as FBUser } from 'firebase/auth';
+import { setUser, setIsLoading } from '@/store/reducers/userSlice';
+import { useAppDispatch } from './hooks';
 import { User } from '@/types/user';
 
 const getUser = (fbUser: FBUser | null): User | null => {
@@ -14,11 +16,14 @@ const getUser = (fbUser: FBUser | null): User | null => {
 };
 
 export const useAuthState = () => {
-  const [user, setUser] = useState<User | null>(getUser(getAuth().currentUser));
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getAuth().onAuthStateChanged((fbUser) => setUser(getUser(fbUser)));
-  }, []);
+    const auth = getAuth();
 
-  return [user];
+    dispatch(setUser(getUser(auth.currentUser)));
+    dispatch(setIsLoading(false));
+
+    auth.onAuthStateChanged((fbUser) => dispatch(setUser(getUser(fbUser))));
+  }, [dispatch]);
 };

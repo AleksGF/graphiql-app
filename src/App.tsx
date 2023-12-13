@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import LanguageContextProvider from '@/components/context/LanguageContext/LanguageContextProvider';
-import ColorModeContextProvider from '@/components/context/ColorModeContext/ColorModeContextProvider';
-import { setUser } from './store/reducers/userSlice';
-import { useAppDispatch } from './hooks/hooks';
+import { LanguageContextProvider } from '@/context';
+import { ColorModeContextProvider } from '@/context';
 import { useAuthState } from './hooks/auth';
 import { routes } from '@/routes/routes';
 import '@/services/firebaseInit';
@@ -11,12 +8,7 @@ import '@/services/firebaseInit';
 const router = createBrowserRouter(routes);
 
 export default function App() {
-  const dispatch = useAppDispatch();
-  const [user] = useAuthState();
-
-  useEffect(() => {
-    dispatch(setUser(user));
-  }, [dispatch, user]);
+  useAuthState();
 
   return (
     <LanguageContextProvider>
