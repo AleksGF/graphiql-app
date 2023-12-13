@@ -9,10 +9,12 @@ const user: User = {
 
 const nullState: UserState = {
   user: null,
+  isLoading: true,
 };
 
 const someState: UserState = {
   user,
+  isLoading: true,
 };
 
 describe('userReducer should work correctly and:', () => {
