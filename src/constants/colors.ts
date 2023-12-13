@@ -1,5 +1,5 @@
 export enum Colors {
-  Backgroung_Light_Grey = '#cfcfcf',
-  Backgroung_Dark_Grey = '#333333',
-  GraphQLColor = '#E10098',
+  Background_Light_Grey = '#cfcfcf',
+  Background_Dark_Grey = '#333333',
+  GraphQLColor = '#e10098',
 }
