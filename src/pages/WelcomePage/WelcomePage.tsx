@@ -1,8 +1,5 @@
-import { ProfileCard } from '@/components';
-import { useLanguageContext } from '@/components/context';
-import { LANGUAGES } from '@/constants/dictionaries';
-import { useAuthState } from '@/hooks/auth';
-import { RoutePaths } from '@/routes/routes';
+import { useAppSelector } from '@/hooks/hooks';
+import { useLanguageContext } from '@/context';
 import {
   Box,
   Button,
@@ -11,16 +8,17 @@ import {
   Typography,
   styled,
 } from '@mui/material';
+import { ProfileCard } from '@/components';
+import { RoutePaths } from '@/routes/routes';
+import { LANGUAGES } from '@/constants/dictionaries';
+import { Colors } from '@/constants/colors';
 
-const GraphQLColor = '#E10098';
-
-// TODO implement Welcome Page
 export default function WelcomePage() {
   const { language } = useLanguageContext();
-  const [user] = useAuthState();
+  const { user } = useAppSelector((state) => state.user);
 
   const SpanStyled = styled('span')({
-    color: GraphQLColor,
+    color: Colors.GraphQLColor,
   });
 
   // TODO Swap 'Sign in' button to 'Main' and 'Sign Up' to 'Log Out' if user logged in.

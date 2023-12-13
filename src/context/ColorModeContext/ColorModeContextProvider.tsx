@@ -5,7 +5,7 @@ import {
   ThemeProvider,
   useMediaQuery,
 } from '@mui/material';
-import { ColorModeContext } from '@/components/context';
+import { ColorModeContext } from '@/context';
 
 interface ColorModeContextProviderProps {
   children: ReactNode;
