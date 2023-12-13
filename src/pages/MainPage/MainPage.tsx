@@ -39,8 +39,8 @@ export default function MainPage() {
             borderRadius: 3,
             backgroundColor:
               palette.mode === 'dark'
-                ? Colors.Backgroung_Dark_Grey
-                : Colors.Backgroung_Light_Grey,
+                ? Colors.Background_Dark_Grey
+                : Colors.Background_Light_Grey,
           })}
         >
           <Box
