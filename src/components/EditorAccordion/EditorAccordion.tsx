@@ -1,15 +1,10 @@
-import React, {
-  ReactElement,
-  SyntheticEvent,
-  useCallback,
-  useMemo,
-} from 'react';
+import React, { ReactElement, SyntheticEvent, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
   setActiveEditorTab,
   toggleEditorAccordionOpen,
 } from '@/store/reducers/appViewSlice';
-import { useLanguageContext } from '@/components/context/LanguageContext/LanguageContext';
+import { useLanguageContext } from '@/context/LanguageContext/LanguageContext';
 import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -76,9 +71,9 @@ export default function EditorAccordion() {
   return (
     <Accordion
       expanded={isEditorAccordionOpen}
-      onClick={useCallback(() => {
+      onClick={() => {
         return;
-      }, [])}
+      }}
     >
       <AccordionSummary
         sx={{ cursor: 'unset !important' }}

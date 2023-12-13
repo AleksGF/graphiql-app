@@ -3,6 +3,7 @@ import Layout from './Layout/Layout';
 import Logo from './Logo/Logo';
 import Footer from './Footer/Footer';
 import RsLogo from './RsLogo/RsLogo';
+import ProfileCard from './ProfileCard/ProfileCard';
 import ApiDocs from './ApiDocs/ApiDocs';
 import EndpointEditor from '@/components/EndpointEditor/EndpointEditor';
 import EditorMenu from '@/components/EditorMenu/EditorMenu';
@@ -19,6 +20,7 @@ export {
   Logo,
   Footer,
   RsLogo,
+  ProfileCard,
   EditorMenu,
   ApiDocs,
   EndpointEditor,

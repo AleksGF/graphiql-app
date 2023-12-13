@@ -1,7 +1,7 @@
 import React, { useMemo, memo, ReactElement, useCallback } from 'react';
 import { useAppDispatch } from '@/hooks/hooks';
 import { toggleIsDocDrawerOpen } from '@/store/reducers/appViewSlice';
-import { useLanguageContext } from '@/components/context/LanguageContext/LanguageContext';
+import { useLanguageContext } from '@/context/LanguageContext/LanguageContext';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import MenuBookIcon from '@mui/icons-material/MenuBook';

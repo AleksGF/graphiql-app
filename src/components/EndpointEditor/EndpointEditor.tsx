@@ -1,11 +1,11 @@
-import React, { ChangeEvent, useRef } from 'react';
+import React, { ChangeEvent, useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
   setNewEndpoint,
   setNewEndpointCurrentInput,
   toggleEndpointEditMode,
 } from '@/store/reducers/endpointEditorSlice';
-import { useLanguageContext } from '@/components/context/LanguageContext/LanguageContext';
+import { useLanguageContext } from '@/context';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -14,12 +14,12 @@ import DoneIcon from '@mui/icons-material/Done';
 import ClearIcon from '@mui/icons-material/Clear';
 import InputAdornment from '@mui/material/InputAdornment';
 import Tooltip from '@mui/material/Tooltip';
-import { LANGUAGES } from '@/constants/dictionaries';
 import { isUrlValid } from '@/utils/isUrlValid';
+import { LANGUAGES } from '@/constants/dictionaries';
 
-// TODO handle clicks away
 export default function EndpointEditor() {
   const dispatch = useAppDispatch();
+
   const { language } = useLanguageContext();
   const { isEndpointEditMode, currentEndpoint, newEndpointCurrentInput } =
     useAppSelector((state) => state.endpointEditor);
@@ -46,6 +46,29 @@ export default function EndpointEditor() {
   const submitNewEndpoint = () => {
     dispatch(setNewEndpoint());
   };
+
+  useEffect(() => {
+    if (!isEndpointEditMode) return;
+
+    const clickAwayListener = (e: Event) => {
+      const target = e.target;
+
+      if (
+        !target ||
+        !(target instanceof HTMLElement) ||
+        target.closest('#endpoint-editor')
+      )
+        return;
+
+      dispatch(toggleEndpointEditMode(false));
+    };
+
+    document.addEventListener('click', clickAwayListener);
+
+    return () => {
+      document.removeEventListener('click', clickAwayListener);
+    };
+  }, [dispatch, isEndpointEditMode]);
 
   return (
     <Box id={'endpoint-editor'} sx={{ p: 1, display: 'flex' }}>

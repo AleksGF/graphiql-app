@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useColorModeContext } from '@/components/context/ColorModeContext/ColorModeContext';
+import { useColorModeContext, useLanguageContext } from '@/context';
+import { LANGUAGES } from '@/constants/dictionaries';
 import { DarkMode, Language, LightMode } from '@mui/icons-material';
 import {
   Button,
-  ButtonGroup,
   Divider,
   Menu,
   MenuItem,
@@ -12,6 +12,9 @@ import {
   useTheme,
 } from '@mui/material';
 import { Logo } from '@/components';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { RoutePaths } from '@/routes/routes';
+import { useAppSelector } from '@/hooks/hooks';
 
 const HeaderStyled = styled('header')({
   display: 'flex',
@@ -22,6 +25,8 @@ const HeaderStyled = styled('header')({
 export default function Header() {
   const theme = useTheme();
   const colorMode = useColorModeContext();
+  const { user } = useAppSelector((state) => state.user);
+  const { language } = useLanguageContext();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = !!anchorEl;
@@ -36,11 +41,11 @@ export default function Header() {
     setAnchorEl(null);
   };
 
-  // TODO Swap 'Sign in' button to 'Main' and 'Sign Up' to 'Log Out' if user logged in.
   // TODO Make it sticky with animation
+  // TODO SignOut
   return (
     <HeaderStyled>
-      <Logo href={'/'}></Logo>
+      <Logo href={RoutePaths.IndexPage}></Logo>
 
       <Typography component={'div'} sx={{ display: 'flex', width: 'auto' }}>
         <Button onClick={colorMode.toggleColorMode}>
@@ -58,14 +63,14 @@ export default function Header() {
           <MenuItem>Russian</MenuItem>
         </Menu>
 
-        <Divider orientation="vertical" sx={{ mx: 1 }} />
-
-        <ButtonGroup variant="outlined">
-          <Button>Sign In</Button>
-          <Button variant="contained" disableElevation>
-            Sign Up
-          </Button>
-        </ButtonGroup>
+        {user && (
+          <>
+            <Divider orientation="vertical" sx={{ mx: 1 }} />
+            <Button title={LANGUAGES[language].BUTTON_SIGNOUT}>
+              <LogoutIcon />
+            </Button>
+          </>
+        )}
       </Typography>
     </HeaderStyled>
   );
