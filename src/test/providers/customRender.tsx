@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppStore, RootState } from '@/store/store';
 import userReducer from '@/store/reducers/userSlice';
 import appViewReducer from '@/store/reducers/appViewSlice';
+import EndpointEditorReducer from '@/store/reducers/endpointEditorSlice';
 import { LanguageContext } from '@/context/LanguageContext/LanguageContext';
 import { ColorModeContext } from '@/context/ColorModeContext/ColorModeContext';
 import { Langs } from '@/constants/dictionaries';
@@ -39,6 +40,7 @@ export const customRender = (
       reducer: {
         user: userReducer,
         appView: appViewReducer,
+        endpointEditor: EndpointEditorReducer,
       },
       preloadedState,
     }) as AppStore,
