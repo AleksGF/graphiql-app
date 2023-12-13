@@ -17,6 +17,11 @@ enum Keys {
   QUERY_VARIABLES_TITLE = 'QUERY_VARIABLES_TITLE',
   QUERY_HEADERS_TITLE = 'QUERY_HEADERS_TITLE',
   SEARCH = 'SEARCH',
+  ENDPOINT_INPUT_LABEL = 'ENDPOINT_INPUT_LABEL',
+  TOOLTIP_ENDPOINT_EDIT = 'TOOLTIP_ENDPOINT_EDIT',
+  TOOLTIP_ENDPOINT_CLEAR = 'TOOLTIP_ENDPOINT_CLEAR',
+  TOOLTIP_ENDPOINT_SUBMIT_OK = 'TOOLTIP_ENDPOINT_SUBMIT_OK',
+  TOOLTIP_ENDPOINT_SUBMIT_INVALID = 'TOOLTIP_ENDPOINT_SUBMIT_INVALID',
 }
 
 export type Dictionary = Record<keyof typeof Keys, string>;
@@ -36,6 +41,11 @@ const EN: Dictionary = {
   [Keys.QUERY_VARIABLES_TITLE]: 'Variables',
   [Keys.QUERY_HEADERS_TITLE]: 'Headers',
   [Keys.SEARCH]: 'Search',
+  [Keys.ENDPOINT_INPUT_LABEL]: 'GraphQL API Endpoint',
+  [Keys.TOOLTIP_ENDPOINT_EDIT]: 'Edit endpoint',
+  [Keys.TOOLTIP_ENDPOINT_CLEAR]: 'Clear input',
+  [Keys.TOOLTIP_ENDPOINT_SUBMIT_OK]: 'Submit new endpoint',
+  [Keys.TOOLTIP_ENDPOINT_SUBMIT_INVALID]: 'You should provide full correct URL',
 };
 
 const RU: Dictionary = {
@@ -52,6 +62,12 @@ const RU: Dictionary = {
   [Keys.QUERY_VARIABLES_TITLE]: 'Переменные',
   [Keys.QUERY_HEADERS_TITLE]: 'Заголовки',
   [Keys.SEARCH]: 'Искать',
+  [Keys.ENDPOINT_INPUT_LABEL]: 'Адрес GraphQL',
+  [Keys.TOOLTIP_ENDPOINT_EDIT]: 'Изменить адрес',
+  [Keys.TOOLTIP_ENDPOINT_CLEAR]: 'Очистить поле',
+  [Keys.TOOLTIP_ENDPOINT_SUBMIT_OK]: 'Подтвердить изменение',
+  [Keys.TOOLTIP_ENDPOINT_SUBMIT_INVALID]:
+    'Необходимо ввести полный корректный адрес',
 };
 
 export const LANGUAGES: Dictionaries = { EN, RU };
