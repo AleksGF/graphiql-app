@@ -1,8 +1,11 @@
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, FieldError, useForm } from 'react-hook-form';
+import PasswordStrength from './PasswordStrength';
+import { useLanguageContext } from '@/components/context';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Avatar, Typography, TextField, Button } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { schema } from '@/types/validationSchema';
+import { Keys, LANGUAGES } from '@/constants/dictionaries';
 
 type FormProps = {
   title: string;
@@ -15,14 +18,30 @@ type FormInput = {
 };
 
 export default function UserForm({ title, onSubmit }: FormProps) {
-  const { control, handleSubmit } = useForm<FormInput>({
-    resolver: yupResolver<FormInput>(schema),
+  const { language } = useLanguageContext();
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<FormInput>({
     defaultValues: { email: '', password: '' },
+    resolver: yupResolver<FormInput>(schema),
     mode: 'all',
   });
-
   const onSubmitForm = ({ email, password }: FormInput) => {
     onSubmit(email, password);
+  };
+
+  const handleError = (error?: FieldError) => {
+    if (error && error.message) {
+      if (error.message in Keys) {
+        return LANGUAGES[language][error.message as Keys];
+      }
+
+      return LANGUAGES[language].USER_FORM_VALIDATION;
+    }
+
+    return null;
   };
 
   return (
@@ -55,10 +74,10 @@ export default function UserForm({ title, onSubmit }: FormProps) {
               margin="normal"
               required
               fullWidth
-              label="Email"
+              label={LANGUAGES[language].USER_FORM_EMAIL}
               autoFocus
               {...field}
-              helperText={error?.message}
+              helperText={handleError(error)}
             />
           )}
         />
@@ -66,22 +85,26 @@ export default function UserForm({ title, onSubmit }: FormProps) {
           name="password"
           control={control}
           render={({ field, fieldState: { error } }) => (
-            <TextField
-              error={!!error}
-              margin="normal"
-              required
-              fullWidth
-              label="Password"
-              type="password"
-              {...field}
-              helperText={error?.message}
-            />
+            <>
+              <TextField
+                error={!!error}
+                margin="normal"
+                required
+                fullWidth
+                label={LANGUAGES[language].USER_FORM_PASSWORD}
+                type="password"
+                {...field}
+                helperText={handleError(error)}
+              />
+              <PasswordStrength password={field.value} />
+            </>
           )}
         />
         <Button
           type="submit"
           fullWidth
           variant="contained"
+          disabled={!isValid}
           sx={{ mt: 3, mb: 2 }}
         >
           {title.toUpperCase()}
