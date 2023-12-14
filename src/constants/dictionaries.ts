@@ -3,7 +3,7 @@ export enum Langs {
   RU = 'RU',
 }
 
-enum Keys {
+export enum Keys {
   TITLE_404 = 'TITLE_404',
   TEXT_404 = 'TEXT_404',
   TITLE_ERROR = 'TITLE_ERROR',
@@ -28,6 +28,23 @@ enum Keys {
   BUTTON_SIGNUP = 'BUTTON_SIGNUP',
   BUTTON_SIGNOUT = 'BUTTON_SIGNOUT',
   BUTTON_MAIN = 'BUTTON_MAIN',
+  USER_FORM_EMAIL = 'USER_FORM_EMAIL',
+  USER_FORM_EMAIL_REQUIRED = 'USER_FORM_EMAIL_REQUIRED',
+  USER_FORM_EMAIL_INVALID = 'USER_FORM_EMAIL_INVALID',
+  USER_FORM_PASSWORD = 'USER_FORM_PASSWORD',
+  USER_FORM_PASSWORD_REQUIRED = 'USER_FORM_PASSWORD_REQUIRED',
+  USER_FORM_PASSWORD_NUMBER = 'USER_FORM_PASSWORD_NUMBER',
+  USER_FORM_PASSWORD_DOWN_LETTER = 'USER_FORM_PASSWORD_DOWN_LETTER',
+  USER_FORM_PASSWORD_UP_LETTER = 'USER_FORM_PASSWORD_UP_LETTER',
+  USER_FORM_PASSWORD_SPECIAL = 'USER_FORM_PASSWORD_SPECIAL',
+  USER_FORM_PASSWORD_LENGTH = 'USER_FORM_PASSWORD_LENGTH',
+  USER_FORM_VALIDATION = 'USER_FORM_VALIDATION',
+  SIGNIN_TITLE = 'SIGNIN_TITLE',
+  SIGNIN_LINK = 'SIGNIN_LINK',
+  SIGNIN_MESSAGE = 'SIGNIN_MESSAGE',
+  SIGNUP_TITLE = 'SIGNUP_TITLE',
+  SIGNUP_LINK = 'SIGNUP_LINK',
+  SIGNUP_MESSAGE = 'SIGNUP_MESSAGE',
 }
 
 export type Dictionary = Record<keyof typeof Keys, string>;
@@ -64,6 +81,25 @@ const EN: Dictionary = {
   [Keys.BUTTON_SIGNUP]: 'Sign Up',
   [Keys.BUTTON_SIGNOUT]: 'Sign Out',
   [Keys.BUTTON_MAIN]: 'Main',
+  [Keys.USER_FORM_EMAIL]: 'Email',
+  [Keys.USER_FORM_EMAIL_REQUIRED]: 'Email is a required field',
+  [Keys.USER_FORM_EMAIL_INVALID]: 'Email must be valid email',
+  [Keys.USER_FORM_PASSWORD]: 'Password',
+  [Keys.USER_FORM_PASSWORD_REQUIRED]: 'Password is a required field',
+  [Keys.USER_FORM_PASSWORD_NUMBER]: 'Password must contain number',
+  [Keys.USER_FORM_PASSWORD_DOWN_LETTER]:
+    'Password must contain down cased letter',
+  [Keys.USER_FORM_PASSWORD_UP_LETTER]:
+    'Password must contain upper cased letter',
+  [Keys.USER_FORM_PASSWORD_SPECIAL]: 'Password must contain special character',
+  [Keys.USER_FORM_PASSWORD_LENGTH]: 'Password must be minimum 8 symbols',
+  [Keys.USER_FORM_VALIDATION]: 'Incorrect type',
+  [Keys.SIGNIN_TITLE]: 'Sign In',
+  [Keys.SIGNIN_LINK]: "Don't have an account? Sign Up",
+  [Keys.SIGNIN_MESSAGE]: 'Incorrect email or password',
+  [Keys.SIGNUP_TITLE]: 'Sign Up',
+  [Keys.SIGNUP_LINK]: 'Already have an account? Sign in',
+  [Keys.SIGNUP_MESSAGE]: 'This email already exists.',
 };
 
 const RU: Dictionary = {
@@ -95,6 +131,26 @@ const RU: Dictionary = {
   [Keys.BUTTON_SIGNUP]: 'Регистрация',
   [Keys.BUTTON_SIGNOUT]: 'Выйти',
   [Keys.BUTTON_MAIN]: 'Главная',
+  [Keys.USER_FORM_EMAIL]: 'Почта',
+  [Keys.USER_FORM_EMAIL_REQUIRED]: 'Почта обязательное поле',
+  [Keys.USER_FORM_EMAIL_INVALID]: 'Почта должна быть валидным адресом',
+  [Keys.USER_FORM_PASSWORD]: 'Пароль',
+  [Keys.USER_FORM_PASSWORD_REQUIRED]: 'Пароль обязательное поле',
+  [Keys.USER_FORM_PASSWORD_NUMBER]: 'Пароль должен содержать цифры',
+  [Keys.USER_FORM_PASSWORD_DOWN_LETTER]:
+    'Пароль должен содержать прописные буквы',
+  [Keys.USER_FORM_PASSWORD_UP_LETTER]:
+    'Пароль должен содержать заглавные буквы',
+  [Keys.USER_FORM_PASSWORD_SPECIAL]:
+    'Пароль должен содержать специальные символы',
+  [Keys.USER_FORM_PASSWORD_LENGTH]: 'Пароль должен быть минимум 8 символов',
+  [Keys.USER_FORM_VALIDATION]: 'Неверный ввод',
+  [Keys.SIGNIN_TITLE]: 'Вход',
+  [Keys.SIGNIN_LINK]: 'Еще нет аккаунта? Зарегистрироваться',
+  [Keys.SIGNIN_MESSAGE]: 'Неправильный логин или пароль',
+  [Keys.SIGNUP_TITLE]: 'Регистрация',
+  [Keys.SIGNUP_LINK]: 'Уже есть аккаунт? Войти',
+  [Keys.SIGNUP_MESSAGE]: 'Данный адрес почты уже используется',
 };
 
 export const LANGUAGES: Dictionaries = { EN, RU };
