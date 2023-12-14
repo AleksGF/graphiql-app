@@ -1,6 +1,6 @@
 import { Controller, FieldError, useForm } from 'react-hook-form';
 import PasswordStrength from './PasswordStrength';
-import { useLanguageContext } from '@/components/context';
+import { useLanguageContext } from '@/context';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Avatar, Typography, TextField, Button } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';

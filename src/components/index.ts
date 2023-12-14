@@ -13,6 +13,7 @@ import VariablesEditor from '@/components/VariablesEditor/VariablesEditor';
 import HeadersEditor from './HeadersEditor/HeadersEditor';
 import EditorAccordion from './EditorAccordion/EditorAccordion';
 import DocDrawer from './DocDrawer/DocDrawer';
+import UserForm from './forms/userForm/UserForm';
 
 export {
   Layout,
@@ -30,4 +31,5 @@ export {
   HeadersEditor,
   EditorAccordion,
   DocDrawer,
+  UserForm,
 };

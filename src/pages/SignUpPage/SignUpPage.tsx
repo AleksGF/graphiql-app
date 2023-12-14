@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import UserForm from '@/components/forms/userForm/UserForm';
-import { useLanguageContext } from '@/components/context';
+import { UserForm } from '@/components';
+import { useLanguageContext } from '@/context';
 import { LANGUAGES } from '@/constants/dictionaries';
 import { RoutePaths } from '@/routes/routes';
 import { ERROR_SHOW_TIME } from '@/constants/form';
