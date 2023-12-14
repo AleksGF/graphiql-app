@@ -6,8 +6,10 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import { AppStore, RootState } from '@/store/store';
 import userReducer from '@/store/reducers/userSlice';
-import { LanguageContext } from '@/components/context/LanguageContext/LanguageContext';
-import { ColorModeContext } from '@/components/context/ColorModeContext/ColorModeContext';
+import appViewReducer from '@/store/reducers/appViewSlice';
+import EndpointEditorReducer from '@/store/reducers/endpointEditorSlice';
+import { LanguageContext } from '@/context/LanguageContext/LanguageContext';
+import { ColorModeContext } from '@/context/ColorModeContext/ColorModeContext';
 import { Langs } from '@/constants/dictionaries';
 import { RoutePaths } from '@/routes/routes';
 import { initialState } from '@/test/__mocks__/mockStore';
@@ -37,6 +39,8 @@ export const customRender = (
     store = configureStore({
       reducer: {
         user: userReducer,
+        appView: appViewReducer,
+        endpointEditor: EndpointEditorReducer,
       },
       preloadedState,
     }) as AppStore,

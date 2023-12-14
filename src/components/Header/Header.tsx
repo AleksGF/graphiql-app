@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useColorModeContext, useLanguageContext } from '@/components/context';
+import { useColorModeContext, useLanguageContext } from '@/context';
 import { LANGUAGES } from '@/constants/dictionaries';
 import { DarkMode, Language, LightMode } from '@mui/icons-material';
 import {
@@ -12,9 +12,9 @@ import {
   useTheme,
 } from '@mui/material';
 import { Logo } from '@/components';
-import { useAuthState } from '@/hooks/auth';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { RoutePaths } from '@/routes/routes';
+import { useAppSelector } from '@/hooks/hooks';
 
 const HeaderStyled = styled('header')({
   display: 'flex',
@@ -25,7 +25,7 @@ const HeaderStyled = styled('header')({
 export default function Header() {
   const theme = useTheme();
   const colorMode = useColorModeContext();
-  const [user] = useAuthState();
+  const { user } = useAppSelector((state) => state.user);
   const { language } = useLanguageContext();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
