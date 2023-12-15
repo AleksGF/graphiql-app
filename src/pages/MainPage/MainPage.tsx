@@ -17,8 +17,14 @@ export default function MainPage() {
   const QueryEditorRef = useRef<HTMLDivElement>(null);
   const [queryEditorHeight, setQueryEditorHeight] = useState<string>('200px');
 
+  const ResponseViewerRef = useRef<HTMLDivElement>(null);
+  const [responseViewerHeight, setResponseViewerHeight] =
+    useState<string>('200px');
+
+  //TODO Refactor setting height of Codemirror components. It should be dynamic and consider drawer open/close action
   useLayoutEffect(() => {
-    setQueryEditorHeight(`${QueryEditorRef.current?.offsetHeight}px`);
+    setQueryEditorHeight(`${QueryEditorRef.current?.clientHeight}px`);
+    setResponseViewerHeight(`${ResponseViewerRef.current?.clientHeight}px`);
   }, []);
 
   return (
@@ -68,8 +74,11 @@ export default function MainPage() {
             </Box>
             <EditorAccordion />
           </Box>
-          <Box sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}>
-            <ResponseViewer />
+          <Box
+            sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}
+            ref={ResponseViewerRef}
+          >
+            <ResponseViewer height={responseViewerHeight} />
           </Box>
         </Box>
       </Box>
