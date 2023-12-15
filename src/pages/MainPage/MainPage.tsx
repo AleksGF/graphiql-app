@@ -9,6 +9,7 @@ import {
   DocDrawer,
 } from '@/components';
 import { Colors } from '@/constants/colors';
+import { Container } from '@mui/material';
 
 const BLOCK_MIN_WIDTH = '260px';
 
@@ -17,11 +18,11 @@ export default function MainPage() {
   const [queryEditorHeight, setQueryEditorHeight] = useState<string>('200px');
 
   useLayoutEffect(() => {
-    setQueryEditorHeight(`${QueryEditorRef.current?.clientHeight}px`);
+    setQueryEditorHeight(`${QueryEditorRef.current?.offsetHeight}px`);
   }, []);
 
   return (
-    <Box
+    <Container
       component={'main'}
       sx={({ breakpoints }) => ({
         p: 1,
@@ -72,6 +73,6 @@ export default function MainPage() {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Container>
   );
 }
