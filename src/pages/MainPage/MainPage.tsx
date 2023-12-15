@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import {
   EndpointEditor,
@@ -13,6 +13,15 @@ import { Colors } from '@/constants/colors';
 const BLOCK_MIN_WIDTH = '260px';
 
 export default function MainPage() {
+  const ResponseViewerRef = useRef<HTMLDivElement>(null);
+  const [responseViewerHeight, setResponseViewerHeight] =
+    useState<string>('200px');
+
+  //TODO Refactor setting height of Codemirror components. It should be dynamic and consider drawer open/close action
+  useLayoutEffect(() => {
+    setResponseViewerHeight(`${ResponseViewerRef.current?.clientHeight}px`);
+  }, []);
+
   return (
     <Box
       component={'main'}
@@ -60,8 +69,11 @@ export default function MainPage() {
             </Box>
             <EditorAccordion />
           </Box>
-          <Box sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}>
-            <ResponseViewer />
+          <Box
+            sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}
+            ref={ResponseViewerRef}
+          >
+            <ResponseViewer height={responseViewerHeight} />
           </Box>
         </Box>
       </Box>
