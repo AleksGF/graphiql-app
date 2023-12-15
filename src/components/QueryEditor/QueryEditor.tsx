@@ -11,7 +11,7 @@ interface QueryEditorProps {
   height?: string;
 }
 
-export default function QueryEditor({ height = '200px' }: QueryEditorProps) {
+export default function QueryEditor({ height = '100%' }: QueryEditorProps) {
   const { content } = useAppSelector((state) => state.queryEditor);
   const dispatch = useAppDispatch();
   const { language } = useLanguageContext();
@@ -29,6 +29,7 @@ export default function QueryEditor({ height = '200px' }: QueryEditorProps) {
 
   return (
     <CodeMirror
+      style={{ height: '100%' }}
       value={content}
       height={height}
       theme={material}

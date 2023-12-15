@@ -1,4 +1,3 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import {
   EndpointEditor,
@@ -14,13 +13,6 @@ import { Container } from '@mui/material';
 const BLOCK_MIN_WIDTH = '260px';
 
 export default function MainPage() {
-  const QueryEditorRef = useRef<HTMLDivElement>(null);
-  const [queryEditorHeight, setQueryEditorHeight] = useState<string>('200px');
-
-  useLayoutEffect(() => {
-    setQueryEditorHeight(`${QueryEditorRef.current?.offsetHeight}px`);
-  }, []);
-
   return (
     <Container
       component={'main'}
@@ -63,8 +55,8 @@ export default function MainPage() {
               background: palette.background.default,
             })}
           >
-            <Box sx={{ flexGrow: '1' }} ref={QueryEditorRef}>
-              <QueryEditor height={queryEditorHeight} />
+            <Box sx={{ flexGrow: '1' }}>
+              <QueryEditor />
             </Box>
             <EditorAccordion />
           </Box>
