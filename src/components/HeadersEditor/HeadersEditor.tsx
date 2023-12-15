@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { EditorView } from '@codemirror/view';
 import { materialLight, materialDark } from '@uiw/codemirror-theme-material';
-import { Alert, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+
+const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    maxWidth: '100%',
+    backgroundColor: theme.palette.error.dark,
+  },
+}));
 
 export default function HeadersEditor() {
   const { palette } = useTheme();
@@ -32,23 +43,14 @@ export default function HeadersEditor() {
         onChange={onChange}
         extensions={[EditorView.lineWrapping]}
       />
-      {!!parseError && (
-        <Alert
-          severity="warning"
-          sx={{
-            pt: 0,
-            pb: 0,
-            '& .MuiAlert-icon': {
-              p: 0,
-            },
-            '& .MuiAlert-message': {
-              p: 0,
-            },
-          }}
-        >
-          {parseError}
-        </Alert>
-      )}
+      <CustomTooltip
+        open={!!parseError}
+        title={parseError ?? ''}
+        placement={'bottom'}
+        arrow
+      >
+        <div />
+      </CustomTooltip>
     </>
   );
 }
