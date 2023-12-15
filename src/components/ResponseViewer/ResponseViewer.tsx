@@ -9,12 +9,13 @@ interface ResponseViewerProps {
 }
 
 export default function ResponseViewer({
-  height = '200px',
+  height = '100%',
 }: ResponseViewerProps) {
   const { language } = useLanguageContext();
 
   return (
     <CodeMirror
+      style={{ height: '100%' }}
       value={LANGUAGES[language].RESPONSE_VIEWER_PLACEHOLDER}
       height={height}
       theme={material}
