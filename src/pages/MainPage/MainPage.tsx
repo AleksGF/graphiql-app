@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import {
   EndpointEditor,
@@ -13,6 +13,13 @@ import { Colors } from '@/constants/colors';
 const BLOCK_MIN_WIDTH = '260px';
 
 export default function MainPage() {
+  const QueryEditorRef = useRef<HTMLDivElement>(null);
+  const [queryEditorHeight, setQueryEditorHeight] = useState<string>('200px');
+
+  useLayoutEffect(() => {
+    setQueryEditorHeight(`${QueryEditorRef.current?.clientHeight}px`);
+  }, []);
+
   return (
     <Box
       component={'main'}
@@ -39,8 +46,8 @@ export default function MainPage() {
             borderRadius: 3,
             backgroundColor:
               palette.mode === 'dark'
-                ? Colors.Backgroung_Dark_Grey
-                : Colors.Backgroung_Light_Grey,
+                ? Colors.Background_Dark_Grey
+                : Colors.Background_Light_Grey,
           })}
         >
           <Box
@@ -55,8 +62,8 @@ export default function MainPage() {
               background: palette.background.default,
             })}
           >
-            <Box sx={{ flexGrow: '1' }}>
-              <QueryEditor />
+            <Box sx={{ flexGrow: '1' }} ref={QueryEditorRef}>
+              <QueryEditor height={queryEditorHeight} />
             </Box>
             <EditorAccordion />
           </Box>
