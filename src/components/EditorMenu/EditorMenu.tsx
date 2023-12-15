@@ -9,6 +9,7 @@ import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import MenuItem from './MenuItem';
 import { LANGUAGES } from '@/constants/dictionaries';
+import { prettifyContent } from '@/store/reducers/queryEditorSlice';
 
 function EditorMenu() {
   const dispatch = useAppDispatch();
@@ -38,11 +39,13 @@ function EditorMenu() {
       },
       {
         tooltip: LANGUAGES[language].TOOLTIP_PRETTIFY,
-        handler: () => {},
+        handler: () => {
+          dispatch(prettifyContent());
+        },
         child: <PlayCircleOutlineIcon />,
       },
     ],
-    [language, openDrawer],
+    [dispatch, language, openDrawer],
   );
 
   return (
