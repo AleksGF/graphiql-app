@@ -38,7 +38,7 @@ export const prettifyGraphQl = (query: string): string => {
     .replaceAll(/((?<={.*)\w+(?!.*\)))/gi, '\n$1\n') //move to new line: word predicated by { but not followed by )
     .replaceAll(/(?<!\(.*)}/gi, '\n}') // move to new line: } not predicated by (
     .replaceAll(/(\w|\))\s*({)/gi, '$1 $2') // add space between word or ) and {
-    .replaceAll(/(fragment)?\s+([\w\.]+)\s+on\s+(\w+) {/gi, '\n$1 on $2 $3 {') // move back on single line: "fragment? word on word {"
+    .replaceAll(/(fragment)?\s+([\w\.]+)\s+on\s+(\w+) {/gi, '\n$1 $2 on $3 {') // move back on single line: "fragment? word on word {"
     .replaceAll(
       /(&prty-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}.*?)}/gi,
       '$1\n}', // add newline after multiline strings prefixed uuid.
