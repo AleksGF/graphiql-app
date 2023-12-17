@@ -8,6 +8,7 @@ import { AppStore, RootState } from '@/store/store';
 import userReducer from '@/store/reducers/userSlice';
 import appViewReducer from '@/store/reducers/appViewSlice';
 import EndpointEditorReducer from '@/store/reducers/endpointEditorSlice';
+import responseViewerReducer from '@/store/reducers/responseViewSlice';
 import { LanguageContext } from '@/context/LanguageContext/LanguageContext';
 import { ColorModeContext } from '@/context/ColorModeContext/ColorModeContext';
 import { Langs } from '@/constants/dictionaries';
@@ -41,6 +42,7 @@ export const customRender = (
         user: userReducer,
         appView: appViewReducer,
         endpointEditor: EndpointEditorReducer,
+        responseViewer: responseViewerReducer,
       },
       preloadedState,
     }) as AppStore,
