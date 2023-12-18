@@ -12,6 +12,7 @@ import queryEditorReducer from '@/store/reducers/queryEditorSlice';
 import responseViewerReducer from '@/store/reducers/responseViewSlice';
 import apiEndpointReducer from '@/store/reducers/apiEndpointSlice';
 import headersEditorReducer from '@/store/reducers/headersEditorSlice';
+import variablesEditorReducer from '@/store/reducers/variablesEditorSlice';
 import { LanguageContext } from '@/context/LanguageContext/LanguageContext';
 import { ColorModeContext } from '@/context/ColorModeContext/ColorModeContext';
 import { Langs } from '@/constants/dictionaries';
@@ -49,6 +50,7 @@ export const customRender = (
         responseViewer: responseViewerReducer,
         apiEndpoint: apiEndpointReducer,
         headersEditor: headersEditorReducer,
+        variablesEditor: variablesEditorReducer,
       },
       preloadedState,
     }) as AppStore,

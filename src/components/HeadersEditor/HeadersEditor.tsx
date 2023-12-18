@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
-  Content,
+  HeadersEditorContent,
   setHeadersEditorContent,
 } from '@/store/reducers/headersEditorSlice';
 import Box from '@mui/material/Box';
@@ -20,7 +20,7 @@ export default function HeadersEditor() {
   const [headersError, setHeadersError] = useState<string | null>(null);
 
   const setValue = useCallback(
-    (value: Content) => {
+    (value: HeadersEditorContent) => {
       if (!value) {
         dispatch(setHeadersEditorContent(null));
         setHeadersError(null);
