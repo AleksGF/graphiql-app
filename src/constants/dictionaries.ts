@@ -39,6 +39,7 @@ enum Keys {
   BUTTON_SIGNUP = 'BUTTON_SIGNUP',
   BUTTON_SIGNOUT = 'BUTTON_SIGNOUT',
   BUTTON_MAIN = 'BUTTON_MAIN',
+  QUERY_EDITOR_PLACEHOLDER = 'QUERY_EDITOR_PLACEHOLDER',
   RESPONSE_VIEWER_PLACEHOLDER = 'RESPONSE_VIEWER_PLACEHOLDER',
 }
 
@@ -87,6 +88,7 @@ const EN: Dictionary = {
   [Keys.BUTTON_SIGNUP]: 'Sign Up',
   [Keys.BUTTON_SIGNOUT]: 'Sign Out',
   [Keys.BUTTON_MAIN]: 'Main',
+  [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Input your GraphQL query here.',
   [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Here will be server response."}',
 };
 
@@ -131,6 +133,7 @@ const RU: Dictionary = {
   [Keys.BUTTON_SIGNUP]: 'Регистрация',
   [Keys.BUTTON_SIGNOUT]: 'Выйти',
   [Keys.BUTTON_MAIN]: 'Главная',
+  [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Введите свой GraphQL запрос.',
   [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Здесь будет ответ сервера."}',
 };
 
