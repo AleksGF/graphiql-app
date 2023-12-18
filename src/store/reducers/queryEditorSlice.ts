@@ -1,3 +1,4 @@
+import { prettifyGraphQl } from '@/utils/prettifyGraphQl';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface QueryEditorState {
@@ -15,9 +16,12 @@ const queryEditorSlice = createSlice({
     setContent(state, action: PayloadAction<string>) {
       state.content = action.payload;
     },
+    prettifyContent(state) {
+      state.content = prettifyGraphQl(state.content);
+    },
   },
 });
 
-export const { setContent } = queryEditorSlice.actions;
+export const { setContent, prettifyContent } = queryEditorSlice.actions;
 
 export default queryEditorSlice.reducer;
