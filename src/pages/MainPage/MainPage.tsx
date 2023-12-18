@@ -1,4 +1,3 @@
-import React from 'react';
 import Box from '@mui/material/Box';
 import {
   EndpointEditor,
@@ -9,12 +8,13 @@ import {
   DocDrawer,
 } from '@/components';
 import { Colors } from '@/constants/colors';
+import { Container } from '@mui/material';
 
 const BLOCK_MIN_WIDTH = '260px';
 
 export default function MainPage() {
   return (
-    <Box
+    <Container
       component={'main'}
       sx={({ breakpoints }) => ({
         p: 1,
@@ -65,6 +65,6 @@ export default function MainPage() {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Container>
   );
 }
