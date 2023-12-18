@@ -54,11 +54,11 @@ export const prettifyGraphQl = (query: string): string => {
     return result;
   }, []);
 
-  const linesPadded = [];
+  const linesPadded: string[] = [];
   for (let index = 0, indent = 0; index < linesSplitted.length; index++) {
     const line = linesSplitted[index];
 
-    let padded;
+    let padded: string;
     if (line.match(/^{|{$/)) {
       padded = line.padStart(line.length + indent, ' ');
       indent += PADDING_SIZE;
