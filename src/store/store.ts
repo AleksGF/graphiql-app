@@ -3,6 +3,7 @@ import userReducer from './reducers/userSlice';
 import appViewReducer from './reducers/appViewSlice';
 import EndpointEditorReducer from './reducers/endpointEditorSlice';
 import queryEditorReducer from './reducers/queryEditorSlice';
+import responseViewerReducer from './reducers/responseViewSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     appView: appViewReducer,
     endpointEditor: EndpointEditorReducer,
     queryEditor: queryEditorReducer,
+    responseViewer: responseViewerReducer,
   },
 });
 
