@@ -14,6 +14,8 @@ export const initialState: PreloadedState<RootState> = {
     isEndpointEditMode: false,
     newEndpointCurrentInput: '',
   },
+  queryEditor: { content: '' },
+  responseViewer: { content: '' },
 };
 
 export const stateWithUser: PreloadedState<RootState> = {
@@ -29,4 +31,6 @@ export const stateWithUser: PreloadedState<RootState> = {
     isEndpointEditMode: false,
     newEndpointCurrentInput: '',
   },
+  queryEditor: { content: '' },
+  responseViewer: { content: '' },
 };
