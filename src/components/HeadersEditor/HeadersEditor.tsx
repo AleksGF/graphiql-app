@@ -1,56 +1,59 @@
-import React, { useState } from 'react';
-import CodeMirror from '@uiw/react-codemirror';
-import { EditorView } from '@codemirror/view';
-import { materialLight, materialDark } from '@uiw/codemirror-theme-material';
-import { useTheme } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-
-const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    maxWidth: '100%',
-    backgroundColor: theme.palette.error.dark,
-  },
-}));
+import React, { useCallback, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import {
+  Content,
+  setHeadersEditorContent,
+} from '@/store/reducers/headersEditorSlice';
+import Box from '@mui/material/Box';
+import { Alert, Fade } from '@mui/material';
+import SecondaryEditor from '@/components/SecondaryEditor/SecondaryEditor';
+import { checkHeadersAccepted } from '@/utils/checkHeadersAccepted';
+import { useLanguageContext } from '@/context';
+import { Keys, LANGUAGES } from '@/constants/dictionaries';
 
 export default function HeadersEditor() {
-  const { palette } = useTheme();
+  const dispatch = useAppDispatch();
+  const { language } = useLanguageContext();
 
-  const [parseError, setParseError] = useState<string | null>(null);
+  const { acceptedHeaders } = useAppSelector((state) => state.apiEndpoint);
 
-  const onChange = (value: string) => {
-    if (!value.trim().length) {
-      setParseError(null);
+  const [headersError, setHeadersError] = useState<string | null>(null);
 
-      return;
-    }
+  const setValue = useCallback(
+    (value: Content) => {
+      if (!value) {
+        dispatch(setHeadersEditorContent(null));
+        setHeadersError(null);
 
-    try {
-      const json = JSON.parse(value);
-      setParseError(null);
-      console.log(json);
-    } catch (error: unknown) {
-      setParseError(error instanceof Error ? error.message : String(error));
-    }
-  };
+        return;
+      }
+
+      const checkHeadersResult = checkHeadersAccepted(value, acceptedHeaders);
+
+      if (checkHeadersResult.isOk) {
+        dispatch(setHeadersEditorContent(value));
+        setHeadersError(null);
+
+        return;
+      }
+
+      const errorMessage =
+        checkHeadersResult.messageKey === Keys.HEADERS_SERVER_NOT_ACCEPT_ANY
+          ? LANGUAGES[language].HEADERS_SERVER_NOT_ACCEPT_ANY
+          : `${LANGUAGES[language].HEADERS_SERVER_ACCEPT_ONLY} ${(
+              acceptedHeaders as string[]
+            ).join(', ')}`;
+      setHeadersError(errorMessage);
+    },
+    [acceptedHeaders, dispatch, language],
+  );
 
   return (
-    <>
-      <CodeMirror
-        theme={palette.mode === 'light' ? materialLight : materialDark}
-        onChange={onChange}
-        extensions={[EditorView.lineWrapping]}
-      />
-      <CustomTooltip
-        open={!!parseError}
-        title={parseError ?? ''}
-        placement={'bottom'}
-        arrow
-      >
-        <div />
-      </CustomTooltip>
-    </>
+    <Box>
+      <SecondaryEditor setValue={setValue} />
+      <Fade in={!!headersError}>
+        <Alert severity="error">{headersError}</Alert>
+      </Fade>
+    </Box>
   );
 }

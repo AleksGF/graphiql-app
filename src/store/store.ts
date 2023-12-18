@@ -4,6 +4,8 @@ import appViewReducer from './reducers/appViewSlice';
 import EndpointEditorReducer from './reducers/endpointEditorSlice';
 import queryEditorReducer from './reducers/queryEditorSlice';
 import responseViewerReducer from './reducers/responseViewSlice';
+import apiEndpointReducer from './reducers/apiEndpointSlice';
+import headersEditorReducer from './reducers/headersEditorSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ export const store = configureStore({
     endpointEditor: EndpointEditorReducer,
     queryEditor: queryEditorReducer,
     responseViewer: responseViewerReducer,
+    apiEndpoint: apiEndpointReducer,
+    headersEditor: headersEditorReducer,
   },
 });
 

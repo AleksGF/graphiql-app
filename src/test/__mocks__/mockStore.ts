@@ -16,6 +16,14 @@ export const initialState: PreloadedState<RootState> = {
   },
   queryEditor: { content: '' },
   responseViewer: { content: '' },
+  apiEndpoint: {
+    apiUrl: '',
+    acceptedHeaders: null,
+    apiSchema: '',
+  },
+  headersEditor: {
+    content: null,
+  },
 };
 
 export const stateWithUser: PreloadedState<RootState> = {
@@ -33,4 +41,12 @@ export const stateWithUser: PreloadedState<RootState> = {
   },
   queryEditor: { content: '' },
   responseViewer: { content: '' },
+  apiEndpoint: {
+    apiUrl: '',
+    acceptedHeaders: null,
+    apiSchema: '',
+  },
+  headersEditor: {
+    content: null,
+  },
 };
