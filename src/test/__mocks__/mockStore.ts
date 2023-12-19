@@ -9,8 +9,6 @@ export const initialState: PreloadedState<RootState> = {
     activeEditorTab: 0,
   },
   endpointEditor: {
-    currentEndpoint:
-      'https://swapi-graphql.netlify.app/.netlify/functions/index',
     isEndpointEditMode: false,
     newEndpointCurrentInput: '',
   },
@@ -37,8 +35,6 @@ export const stateWithUser: PreloadedState<RootState> = {
     activeEditorTab: 0,
   },
   endpointEditor: {
-    currentEndpoint:
-      'https://swapi-graphql.netlify.app/.netlify/functions/index',
     isEndpointEditMode: false,
     newEndpointCurrentInput: '',
   },

@@ -1,6 +1,5 @@
 import reducer, {
-  setNewEndpoint,
-  toggleEndpointEditMode,
+  setEndpointEditMode,
   setNewEndpointCurrentInput,
   EndpointEditorState,
 } from '@/store/reducers/endpointEditorSlice';
@@ -10,19 +9,11 @@ const initialEndpoint =
 const newEndpoint = 'http://some-new-endpoint.com/graphql';
 
 const initialState: EndpointEditorState = {
-  currentEndpoint: initialEndpoint,
-  isEndpointEditMode: false,
-  newEndpointCurrentInput: '',
-};
-
-const stateWithNewEndpoint: EndpointEditorState = {
-  currentEndpoint: newEndpoint,
   isEndpointEditMode: false,
   newEndpointCurrentInput: '',
 };
 
 const stateWithEditMode: EndpointEditorState = {
-  currentEndpoint: initialEndpoint,
   isEndpointEditMode: true,
   newEndpointCurrentInput: '',
 };
@@ -32,28 +23,12 @@ describe('endpointEditorReducer should work correctly and:', () => {
     expect(reducer(undefined, { type: undefined })).toEqual(initialState);
   });
 
-  it('setNewEndpoint should work correctly', () => {
-    expect(
-      reducer(
-        { ...initialState, newEndpointCurrentInput: newEndpoint },
-        setNewEndpoint(),
-      ),
-    ).toEqual(stateWithNewEndpoint);
-
-    expect(
-      reducer(
-        { ...initialState, newEndpointCurrentInput: initialEndpoint },
-        setNewEndpoint(),
-      ),
-    ).toEqual(initialState);
-  });
-
   it('toggleEndpointEditMode should work correctly', () => {
-    expect(reducer(initialState, toggleEndpointEditMode(true))).toEqual(
+    expect(reducer(initialState, setEndpointEditMode(true))).toEqual(
       stateWithEditMode,
     );
 
-    expect(reducer(stateWithEditMode, toggleEndpointEditMode(false))).toEqual(
+    expect(reducer(stateWithEditMode, setEndpointEditMode(false))).toEqual(
       initialState,
     );
   });

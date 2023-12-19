@@ -1,9 +1,8 @@
 import React, { ChangeEvent, useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
-  setNewEndpoint,
   setNewEndpointCurrentInput,
-  toggleEndpointEditMode,
+  setEndpointEditMode,
 } from '@/store/reducers/endpointEditorSlice';
 import { useLanguageContext } from '@/context';
 import Box from '@mui/material/Box';
@@ -21,8 +20,11 @@ export default function EndpointEditor() {
   const dispatch = useAppDispatch();
 
   const { language } = useLanguageContext();
-  const { isEndpointEditMode, currentEndpoint, newEndpointCurrentInput } =
-    useAppSelector((state) => state.endpointEditor);
+
+  const { isEndpointEditMode, newEndpointCurrentInput } = useAppSelector(
+    (state) => state.endpointEditor,
+  );
+  const { apiUrl } = useAppSelector((state) => state.apiEndpoint);
 
   const inputFieldRef = useRef<HTMLInputElement>(null);
 
@@ -33,18 +35,19 @@ export default function EndpointEditor() {
   };
 
   const setEditMode = () => {
-    dispatch(toggleEndpointEditMode(true));
+    dispatch(setEndpointEditMode(true));
 
     if (inputFieldRef.current) inputFieldRef.current.focus();
   };
 
   const clearInput = () => {
     dispatch(setNewEndpointCurrentInput(''));
-    dispatch(toggleEndpointEditMode(false));
+    dispatch(setEndpointEditMode(false));
   };
 
   const submitNewEndpoint = () => {
-    dispatch(setNewEndpoint());
+    dispatch(setEndpointEditMode(false));
+    // TODO Add submit handler
   };
 
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function EndpointEditor() {
       )
         return;
 
-      dispatch(toggleEndpointEditMode(false));
+      dispatch(setEndpointEditMode(false));
     };
 
     document.addEventListener('click', clickAwayListener);
@@ -74,7 +77,7 @@ export default function EndpointEditor() {
     <Box id={'endpoint-editor'} sx={{ p: 1, display: 'flex' }}>
       <TextField
         label={LANGUAGES[language].ENDPOINT_INPUT_LABEL}
-        value={isEndpointEditMode ? newEndpointCurrentInput : currentEndpoint}
+        value={isEndpointEditMode ? newEndpointCurrentInput : apiUrl}
         onChange={inputHandler}
         focused={isEndpointEditMode}
         inputRef={inputFieldRef}
