@@ -8,8 +8,8 @@ import { VariablesEditorContent } from '@/store/reducers/variablesEditorSlice';
 
 export const prepareRequest = (
   url: string,
-  query: string = defaultApiQuery,
   headers: HeadersEditorContent = {},
+  query: string = defaultApiQuery,
   variables: VariablesEditorContent = {},
 ): Request => {
   const req = new Request(url, {
@@ -26,7 +26,6 @@ export const prepareRequest = (
     for (const [name, value] of Object.entries(headers)) {
       try {
         req.headers.set(name, value);
-        console.log(name);
       } catch (e) {}
     }
   }

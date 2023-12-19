@@ -15,9 +15,9 @@ export const initialState: PreloadedState<RootState> = {
   queryEditor: { content: '' },
   responseViewer: { content: '' },
   apiEndpoint: {
-    apiUrl: '',
-    acceptedHeaders: null,
-    apiSchema: '',
+    isApiFetching: false,
+    apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
+    apiAddingError: null,
   },
   headersEditor: {
     content: null,
@@ -41,9 +41,9 @@ export const stateWithUser: PreloadedState<RootState> = {
   queryEditor: { content: '' },
   responseViewer: { content: '' },
   apiEndpoint: {
-    apiUrl: '',
-    acceptedHeaders: null,
-    apiSchema: '',
+    isApiFetching: false,
+    apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
+    apiAddingError: null,
   },
   headersEditor: {
     content: null,

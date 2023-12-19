@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useRef } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
   setNewEndpointCurrentInput,
@@ -15,7 +15,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Tooltip from '@mui/material/Tooltip';
 import { isUrlValid } from '@/utils/isUrlValid';
 import { LANGUAGES } from '@/constants/dictionaries';
-import { addNewEndpoint } from '@/store/reducers/apiEndpointSlice';
+import {
+  addNewEndpoint,
+  clearAddingEndpointError,
+} from '@/store/reducers/apiEndpointSlice';
+import ErrorMessage from '@/components/ErrorMessage/ErrorMessage';
 
 export default function EndpointEditor() {
   const dispatch = useAppDispatch();
@@ -25,7 +29,9 @@ export default function EndpointEditor() {
   const { isEndpointEditMode, newEndpointCurrentInput } = useAppSelector(
     (state) => state.endpointEditor,
   );
-  const { apiUrl } = useAppSelector((state) => state.apiEndpoint);
+  const { apiUrl, apiAddingError } = useAppSelector(
+    (state) => state.apiEndpoint,
+  );
 
   const inputFieldRef = useRef<HTMLInputElement>(null);
 
@@ -50,6 +56,10 @@ export default function EndpointEditor() {
     dispatch(setEndpointEditMode(false));
     dispatch(addNewEndpoint(newEndpointCurrentInput));
   };
+
+  const clearErrorMessage = useCallback(() => {
+    dispatch(clearAddingEndpointError());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isEndpointEditMode) return;
@@ -130,6 +140,13 @@ export default function EndpointEditor() {
         }}
         size={'small'}
         fullWidth
+      />
+      <ErrorMessage
+        message={
+          apiAddingError || LANGUAGES[language].ENDPOINT_ADD_ERROR_DEFAULT
+        }
+        isOpen={apiAddingError !== null}
+        handleClose={clearErrorMessage}
       />
     </Box>
   );

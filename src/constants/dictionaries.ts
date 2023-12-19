@@ -22,6 +22,7 @@ export enum Keys {
   TOOLTIP_ENDPOINT_CLEAR = 'TOOLTIP_ENDPOINT_CLEAR',
   TOOLTIP_ENDPOINT_SUBMIT_OK = 'TOOLTIP_ENDPOINT_SUBMIT_OK',
   TOOLTIP_ENDPOINT_SUBMIT_INVALID = 'TOOLTIP_ENDPOINT_SUBMIT_INVALID',
+  ENDPOINT_ADD_ERROR_DEFAULT = 'ENDPOINT_ADD_ERROR_DEFAULT',
   TITLE_WELCOME = 'TITLE_WELCOME',
   TITLE_WELCOME_2 = 'TITLE_WELCOME_2',
   TEXT_WELCOME = 'TEXT_WELCOME',
@@ -70,6 +71,7 @@ const EN: Dictionary = {
   [Keys.TOOLTIP_ENDPOINT_CLEAR]: 'Clear input',
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_OK]: 'Submit new endpoint',
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_INVALID]: 'You should provide full correct URL',
+  [Keys.ENDPOINT_ADD_ERROR_DEFAULT]: 'Error while adding new endpoint',
   [Keys.TITLE_WELCOME]: 'Welcome',
   [Keys.TITLE_WELCOME_2]: "It's our clone of ",
   [Keys.TEXT_WELCOME]:
@@ -118,6 +120,7 @@ const RU: Dictionary = {
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_OK]: 'Подтвердить изменение',
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_INVALID]:
     'Необходимо ввести полный корректный адрес',
+  [Keys.ENDPOINT_ADD_ERROR_DEFAULT]: 'Не удалось добавить новый адрес',
   [Keys.TITLE_WELCOME]: 'Добро пожаловать',
   [Keys.TITLE_WELCOME_2]: 'Это наш клон ',
   [Keys.TEXT_WELCOME]:
