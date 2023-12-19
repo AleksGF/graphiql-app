@@ -15,6 +15,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Tooltip from '@mui/material/Tooltip';
 import { isUrlValid } from '@/utils/isUrlValid';
 import { LANGUAGES } from '@/constants/dictionaries';
+import { addNewEndpoint } from '@/store/reducers/apiEndpointSlice';
 
 export default function EndpointEditor() {
   const dispatch = useAppDispatch();
@@ -47,7 +48,7 @@ export default function EndpointEditor() {
 
   const submitNewEndpoint = () => {
     dispatch(setEndpointEditMode(false));
-    // TODO Add submit handler
+    dispatch(addNewEndpoint(newEndpointCurrentInput));
   };
 
   useEffect(() => {
@@ -104,8 +105,11 @@ export default function EndpointEditor() {
                 arrow
               >
                 <Box>
-                  <IconButton disabled={isSubmitDisabled}>
-                    <DoneIcon onClick={submitNewEndpoint} />
+                  <IconButton
+                    disabled={isSubmitDisabled}
+                    onClick={submitNewEndpoint}
+                  >
+                    <DoneIcon />
                   </IconButton>
                 </Box>
               </Tooltip>
