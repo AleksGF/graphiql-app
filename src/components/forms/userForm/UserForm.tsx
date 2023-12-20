@@ -1,15 +1,26 @@
+import { useState } from 'react';
 import { Controller, FieldError, useForm } from 'react-hook-form';
 import PasswordStrength from './PasswordStrength';
 import { useLanguageContext } from '@/context';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Box, Avatar, Typography, TextField, Button } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { schema } from '@/types/validationSchema';
 import { Keys, LANGUAGES } from '@/constants/dictionaries';
+import { ERROR_SHOW_TIME } from '@/constants/form';
+import {
+  Box,
+  Avatar,
+  Typography,
+  TextField,
+  Button,
+  Alert,
+  Fade,
+} from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 type FormProps = {
   title: string;
-  onSubmit: (email: string, pass: string) => void;
+  errorMessage: string;
+  authHandler: (email: string, pass: string) => Promise<void>;
 };
 
 type FormInput = {
@@ -17,8 +28,14 @@ type FormInput = {
   password: string;
 };
 
-export default function UserForm({ title, onSubmit }: FormProps) {
+export default function UserForm({
+  title,
+  errorMessage,
+  authHandler,
+}: FormProps) {
   const { language } = useLanguageContext();
+  const [isAlertShow, setIsAlertShow] = useState<boolean>(false);
+  const [timerId, setTimerId] = useState<number | null>(null);
   const {
     control,
     handleSubmit,
@@ -28,8 +45,27 @@ export default function UserForm({ title, onSubmit }: FormProps) {
     resolver: yupResolver<FormInput>(schema),
     mode: 'all',
   });
-  const onSubmitForm = ({ email, password }: FormInput) => {
-    onSubmit(email, password);
+
+  const onSubmitForm = async ({ email, password }: FormInput) => {
+    try {
+      await authHandler(email, password);
+    } catch {
+      showAlert();
+    }
+  };
+
+  const showAlert = () => {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+
+    const timer = setTimeout(() => {
+      setIsAlertShow(false);
+      setTimerId(null);
+    }, ERROR_SHOW_TIME);
+
+    setTimerId(+timer);
+    setIsAlertShow(true);
   };
 
   const handleError = (error?: FieldError) => {
@@ -53,6 +89,9 @@ export default function UserForm({ title, onSubmit }: FormProps) {
         alignItems: 'center',
       }}
     >
+      <Fade in={isAlertShow}>
+        <Alert severity="error">{errorMessage}</Alert>
+      </Fade>
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOutlinedIcon />
       </Avatar>
