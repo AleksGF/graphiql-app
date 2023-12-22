@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
+import { Dictionary } from '@/constants/dictionaries';
 
-export const getErrorTextKey = (error: unknown): string => {
+export const getErrorTextKey = (error: unknown): keyof Dictionary => {
   if (
     error instanceof AxiosError &&
     error.response &&

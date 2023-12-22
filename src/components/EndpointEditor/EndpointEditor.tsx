@@ -14,7 +14,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import InputAdornment from '@mui/material/InputAdornment';
 import Tooltip from '@mui/material/Tooltip';
 import { isUrlValid } from '@/utils/isUrlValid';
-import { LANGUAGES } from '@/constants/dictionaries';
+import { Dictionary, LANGUAGES } from '@/constants/dictionaries';
 import {
   addNewEndpoint,
   clearAddingEndpointError,
@@ -141,13 +141,16 @@ export default function EndpointEditor() {
         size={'small'}
         fullWidth
       />
-      <ErrorMessage
-        message={
-          apiAddingError || LANGUAGES[language].ENDPOINT_ADD_ERROR_DEFAULT
-        }
-        isOpen={apiAddingError !== null}
-        handleClose={clearErrorMessage}
-      />
+      {!!apiAddingError && (
+        <ErrorMessage
+          message={
+            LANGUAGES[language][apiAddingError as keyof Dictionary] ??
+            LANGUAGES[language].ENDPOINT_ADD_ERROR_DEFAULT
+          }
+          isOpen={true}
+          handleClose={clearErrorMessage}
+        />
+      )}
     </Box>
   );
 }
