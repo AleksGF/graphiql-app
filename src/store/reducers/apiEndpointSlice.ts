@@ -8,6 +8,7 @@ import { prepareRequest } from '@/utils/prepareRequest';
 import { defaultApiQuery } from '@/constants/api';
 import { RootState } from '@/store/store';
 import { AxiosError } from 'axios';
+import { getErrorTextKey } from '@/utils/getErrorTextKey';
 
 interface ApiEndpoint {
   isApiFetching: boolean;
@@ -39,26 +40,10 @@ export const addNewEndpoint = createAsyncThunk(
         error.response &&
         error.response.status === 401
       ) {
-        console.log('401 Unauthorized');
-
         return endpointUrl;
       }
 
-      if (error instanceof AxiosError && error.response) {
-        console.log('Response Error');
-
-        return rejectWithValue(error.response.status);
-      }
-
-      if (error instanceof AxiosError && error.request) {
-        console.log(error.request);
-
-        return rejectWithValue('Request Error');
-      }
-
-      return rejectWithValue(
-        `Error: ${error instanceof Error ? error.message : ''}`,
-      );
+      return rejectWithValue(getErrorTextKey(error));
     }
 
     return endpointUrl;
