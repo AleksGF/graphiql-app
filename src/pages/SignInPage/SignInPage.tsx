@@ -1,4 +1,5 @@
 import { UserForm } from '@/components';
+import { Link as RouterLink } from 'react-router-dom';
 import { useLanguageContext } from '@/context';
 import { LANGUAGES } from '@/constants/dictionaries';
 import { RoutePaths } from '@/routes/routes';
@@ -15,7 +16,7 @@ export default function SignInPage() {
         errorMessage={LANGUAGES[language].SIGNIN_MESSAGE}
         authHandler={signIn}
       />
-      <Link href={RoutePaths.SignUpPage} variant="body2">
+      <Link component={RouterLink} to={RoutePaths.SignUpPage} variant="body2">
         {LANGUAGES[language].SIGNIN_LINK}
       </Link>
     </Container>
