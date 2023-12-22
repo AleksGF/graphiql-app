@@ -5,7 +5,9 @@ import {
   SerializedError,
 } from '@reduxjs/toolkit';
 import { prepareRequest } from '@/utils/prepareRequest';
+import { defaultApiQuery } from '@/constants/api';
 import { RootState } from '@/store/store';
+import { AxiosError } from 'axios';
 
 interface ApiEndpoint {
   isApiFetching: boolean;
@@ -19,23 +21,44 @@ const initialState: ApiEndpoint = {
   apiAddingError: null,
 };
 
-// TODO Add Axios
 // TODO Handle Errors
 export const addNewEndpoint = createAsyncThunk(
   'apiEndpoint/addNewEndpoint',
   async (endpointUrl: string, { getState, rejectWithValue }) => {
     const headers = (getState() as RootState).headersEditor.content;
 
-    const req = prepareRequest(endpointUrl, headers);
+    const axios = prepareRequest(headers);
 
     try {
-      const res = await fetch(req);
-
-      if (!res.ok) {
-        rejectWithValue(`Status: ${res.status}, StatusText: ${res.statusText}`);
-      }
+      await axios(endpointUrl, {
+        data: { query: defaultApiQuery },
+      });
     } catch (error) {
-      rejectWithValue(String(error));
+      if (
+        error instanceof AxiosError &&
+        error.response &&
+        error.response.status === 401
+      ) {
+        console.log('401 Unauthorized');
+
+        return endpointUrl;
+      }
+
+      if (error instanceof AxiosError && error.response) {
+        console.log('Response Error');
+
+        return rejectWithValue(error.response.status);
+      }
+
+      if (error instanceof AxiosError && error.request) {
+        console.log(error.request);
+
+        return rejectWithValue('Request Error');
+      }
+
+      return rejectWithValue(
+        `Error: ${error instanceof Error ? error.message : ''}`,
+      );
     }
 
     return endpointUrl;
