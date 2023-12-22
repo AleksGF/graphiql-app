@@ -29,7 +29,7 @@ export default function EndpointEditor() {
   const { isEndpointEditMode, newEndpointCurrentInput } = useAppSelector(
     (state) => state.endpointEditor,
   );
-  const { apiUrl, apiAddingError } = useAppSelector(
+  const { apiUrl, apiAddingError, isApiFetching } = useAppSelector(
     (state) => state.apiEndpoint,
   );
 
@@ -54,6 +54,7 @@ export default function EndpointEditor() {
 
   const submitNewEndpoint = () => {
     dispatch(setEndpointEditMode(false));
+    dispatch(setNewEndpointCurrentInput(''));
     dispatch(addNewEndpoint(newEndpointCurrentInput));
   };
 
@@ -84,11 +85,13 @@ export default function EndpointEditor() {
     };
   }, [dispatch, isEndpointEditMode]);
 
+  const apiUrlShown = isApiFetching ? '' : apiUrl;
+
   return (
     <Box id={'endpoint-editor'} sx={{ p: 1, display: 'flex' }}>
       <TextField
         label={LANGUAGES[language].ENDPOINT_INPUT_LABEL}
-        value={isEndpointEditMode ? newEndpointCurrentInput : apiUrl}
+        value={isEndpointEditMode ? newEndpointCurrentInput : apiUrlShown}
         onChange={inputHandler}
         focused={isEndpointEditMode}
         inputRef={inputFieldRef}
