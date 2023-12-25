@@ -15,6 +15,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { HeadersEditor, VariablesEditor } from '@/components';
 import { LANGUAGES } from '@/constants/dictionaries';
 
+const MIN_TAB_HEIGHT = '8em';
+const MAX_TAB_HEIGHT = '15em';
+
 interface TabPanelProps {
   children: ReactElement;
   index: number;
@@ -34,7 +37,17 @@ const CustomTabPanel = ({
     aria-labelledby={`tab-${index}`}
     {...other}
   >
-    {value === index && <Box sx={{ p: 1 }}>{children}</Box>}
+    {value === index && (
+      <Box
+        sx={{
+          minHeight: MIN_TAB_HEIGHT,
+          maxHeight: MAX_TAB_HEIGHT,
+          overflowY: 'auto',
+        }}
+      >
+        {children}
+      </Box>
+    )}
   </div>
 );
 
@@ -74,9 +87,13 @@ export default function EditorAccordion() {
       onClick={() => {
         return;
       }}
+      sx={{ '& .MuiButtonBase-root': { minHeight: '2em' } }}
     >
       <AccordionSummary
-        sx={{ cursor: 'unset !important' }}
+        sx={{
+          cursor: 'unset !important',
+          '& .MuiAccordionSummary-content': { m: 0 },
+        }}
         expandIcon={
           <ExpandMoreIcon
             onClick={toggleAccordionExpanded}
@@ -94,6 +111,15 @@ export default function EditorAccordion() {
               display: isEditorAccordionOpen ? 'block' : 'none',
             },
           }}
+          sx={{
+            minHeight: '1.5em',
+            '& .MuiButtonBase-root.MuiTab-root': {
+              pt: 0,
+              pb: 0,
+              minHeight: '1.5em',
+            },
+            '& .MuiTouchRipple-root': { pt: 0, pb: 0 },
+          }}
         >
           {tabs.map((tab, index) => (
             <Tab
@@ -106,7 +132,7 @@ export default function EditorAccordion() {
           ))}
         </Tabs>
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails sx={{ pt: 0, pb: 1 }}>
         {tabs.map((tab, index) => (
           <CustomTabPanel key={index} value={activeEditorTab} index={index}>
             {tab.child}

@@ -3,7 +3,7 @@ export enum Langs {
   RU = 'RU',
 }
 
-enum Keys {
+export enum Keys {
   TITLE_404 = 'TITLE_404',
   TEXT_404 = 'TEXT_404',
   TITLE_ERROR = 'TITLE_ERROR',
@@ -41,6 +41,9 @@ enum Keys {
   BUTTON_MAIN = 'BUTTON_MAIN',
   QUERY_EDITOR_PLACEHOLDER = 'QUERY_EDITOR_PLACEHOLDER',
   RESPONSE_VIEWER_PLACEHOLDER = 'RESPONSE_VIEWER_PLACEHOLDER',
+  HEADERS_ENTER_NOT_VALID = 'HEADERS_ENTER_NOT_VALID',
+  HEADERS_SERVER_NOT_ACCEPT_ANY = 'HEADERS_SERVER_NOT_ACCEPT_ANY',
+  HEADERS_SERVER_ACCEPT_ONLY = 'HEADERS_SERVER_ACCEPT_ONLY',
 }
 
 export type Dictionary = Record<keyof typeof Keys, string>;
@@ -90,6 +93,9 @@ const EN: Dictionary = {
   [Keys.BUTTON_MAIN]: 'Main',
   [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Input your GraphQL query here.',
   [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Here will be server response."}',
+  [Keys.HEADERS_ENTER_NOT_VALID]: 'Not valid input:',
+  [Keys.HEADERS_SERVER_NOT_ACCEPT_ANY]: 'Server does not accept any Headers',
+  [Keys.HEADERS_SERVER_ACCEPT_ONLY]: 'Server accept only next Headers:',
 };
 
 const RU: Dictionary = {
@@ -135,6 +141,10 @@ const RU: Dictionary = {
   [Keys.BUTTON_MAIN]: 'Главная',
   [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Введите свой GraphQL запрос.',
   [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Здесь будет ответ сервера."}',
+  [Keys.HEADERS_ENTER_NOT_VALID]: 'Не валидный ввод:',
+  [Keys.HEADERS_SERVER_NOT_ACCEPT_ANY]:
+    'Сервер не принимает никаких заголовков',
+  [Keys.HEADERS_SERVER_ACCEPT_ONLY]: 'Сервер принимает следующие заголовки:',
 };
 
 export const LANGUAGES: Dictionaries = { EN, RU };
