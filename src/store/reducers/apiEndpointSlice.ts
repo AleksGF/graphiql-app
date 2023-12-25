@@ -5,7 +5,7 @@ import {
   SerializedError,
 } from '@reduxjs/toolkit';
 import { prepareRequest } from '@/utils/prepareRequest';
-import { defaultApiQuery } from '@/constants/api';
+import { defaultApiQuery, HTTP_STATUS } from '@/constants/api';
 import { RootState } from '@/store/store';
 import { AxiosError } from 'axios';
 import { getErrorTextKey } from '@/utils/getErrorTextKey';
@@ -22,7 +22,6 @@ const initialState: ApiEndpoint = {
   apiAddingError: null,
 };
 
-// TODO Handle Errors
 export const addNewEndpoint = createAsyncThunk(
   'apiEndpoint/addNewEndpoint',
   async (endpointUrl: string, { getState, rejectWithValue }) => {
@@ -38,7 +37,7 @@ export const addNewEndpoint = createAsyncThunk(
       if (
         error instanceof AxiosError &&
         error.response &&
-        error.response.status === 401
+        error.response.status === HTTP_STATUS.Code_401
       ) {
         return endpointUrl;
       }

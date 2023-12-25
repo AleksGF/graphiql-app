@@ -1,11 +1,12 @@
 import { AxiosError } from 'axios';
 import { Dictionary } from '@/constants/dictionaries';
+import { HTTP_STATUS } from '@/constants/api';
 
 export const getErrorTextKey = (error: unknown): keyof Dictionary => {
   if (
     error instanceof AxiosError &&
     error.response &&
-    error.response.status >= 500
+    error.response.status >= HTTP_STATUS.Code_500
   ) {
     return 'REQUEST_ERROR_500';
   }
@@ -13,7 +14,7 @@ export const getErrorTextKey = (error: unknown): keyof Dictionary => {
   if (
     error instanceof AxiosError &&
     error.response &&
-    error.response.status === 401
+    error.response.status === HTTP_STATUS.Code_401
   ) {
     return 'REQUEST_ERROR_401';
   }
@@ -21,7 +22,7 @@ export const getErrorTextKey = (error: unknown): keyof Dictionary => {
   if (
     error instanceof AxiosError &&
     error.response &&
-    error.response.status >= 400
+    error.response.status >= HTTP_STATUS.Code_400
   ) {
     return 'REQUEST_ERROR_400';
   }
@@ -29,7 +30,7 @@ export const getErrorTextKey = (error: unknown): keyof Dictionary => {
   if (
     error instanceof AxiosError &&
     error.response &&
-    error.response.status >= 300
+    error.response.status >= HTTP_STATUS.Code_300
   ) {
     return 'REQUEST_ERROR_300';
   }
