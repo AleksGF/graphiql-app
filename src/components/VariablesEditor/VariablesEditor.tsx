@@ -5,7 +5,7 @@ import {
   setVariablesEditorContent,
 } from '@/store/reducers/variablesEditorSlice';
 import Box from '@mui/material/Box';
-import SecondaryEditor from '@/components/SecondaryEditor/SecondaryEditor';
+import { SecondaryEditor } from '@/components';
 
 export default function VariablesEditor() {
   const dispatch = useAppDispatch();
