@@ -49,6 +49,9 @@ export enum Keys {
   USER_FORM_PASSWORD_UP_LETTER = 'USER_FORM_PASSWORD_UP_LETTER',
   USER_FORM_PASSWORD_SPECIAL = 'USER_FORM_PASSWORD_SPECIAL',
   USER_FORM_PASSWORD_LENGTH = 'USER_FORM_PASSWORD_LENGTH',
+  USER_FORM_CONFIRM_PASSWORD = 'USER_FORM_CONFIRM_PASSWORD',
+  USER_FORM_CONFIRM_PASSWORD_REQUIRED = 'USER_FORM_CONFIRM_PASSWORD_REQUIRED',
+  USER_FORM_CONFIRM_PASSWORD_MATCH = 'USER_FORM_CONFIRM_PASSWORD_MATCH',
   USER_FORM_VALIDATION = 'USER_FORM_VALIDATION',
   SIGNIN_TITLE = 'SIGNIN_TITLE',
   SIGNIN_LINK = 'SIGNIN_LINK',
@@ -115,6 +118,10 @@ const EN: Dictionary = {
     'Password must contain upper cased letter',
   [Keys.USER_FORM_PASSWORD_SPECIAL]: 'Password must contain special character',
   [Keys.USER_FORM_PASSWORD_LENGTH]: 'Password must be minimum 8 symbols',
+  [Keys.USER_FORM_CONFIRM_PASSWORD]: 'Confirm password',
+  [Keys.USER_FORM_CONFIRM_PASSWORD_REQUIRED]:
+    'Confirm password is a required field',
+  [Keys.USER_FORM_CONFIRM_PASSWORD_MATCH]: 'Password does not match',
   [Keys.USER_FORM_VALIDATION]: 'Incorrect type',
   [Keys.SIGNIN_TITLE]: 'Sign In',
   [Keys.SIGNIN_LINK]: "Don't have an account? Sign Up",
@@ -178,6 +185,10 @@ const RU: Dictionary = {
   [Keys.USER_FORM_PASSWORD_SPECIAL]:
     'Пароль должен содержать специальные символы',
   [Keys.USER_FORM_PASSWORD_LENGTH]: 'Пароль должен быть минимум 8 символов',
+  [Keys.USER_FORM_CONFIRM_PASSWORD]: 'Подтверждение пароля',
+  [Keys.USER_FORM_CONFIRM_PASSWORD_REQUIRED]:
+    'Подтверждение пароля обязательное поле',
+  [Keys.USER_FORM_CONFIRM_PASSWORD_MATCH]: 'Пароли не совпадают',
   [Keys.USER_FORM_VALIDATION]: 'Неверный ввод',
   [Keys.SIGNIN_TITLE]: 'Вход',
   [Keys.SIGNIN_LINK]: 'Еще нет аккаунта? Зарегистрироваться',

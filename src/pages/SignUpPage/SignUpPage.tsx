@@ -15,6 +15,7 @@ export default function SignUpPage() {
         title={LANGUAGES[language].SIGNUP_TITLE}
         errorMessage={LANGUAGES[language].SIGNUP_MESSAGE}
         authHandler={signUp}
+        shouldConfirmPass
       />
       <Link component={RouterLink} to={RoutePaths.SignInPage} variant="body2">
         {LANGUAGES[language].SIGNUP_LINK}
