@@ -15,6 +15,7 @@ import EditorAccordion from './EditorAccordion/EditorAccordion';
 import DocDrawer from './DocDrawer/DocDrawer';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
 import SecondaryEditor from './SecondaryEditor/SecondaryEditor';
+import Loader from './Loader/Loader';
 
 export {
   Layout,
@@ -34,4 +35,5 @@ export {
   DocDrawer,
   SecondaryEditor,
   ErrorMessage,
+  Loader,
 };
