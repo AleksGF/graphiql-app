@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@/hooks/hooks';
 import { useLanguageContext } from '@/context';
 import {
@@ -14,6 +15,7 @@ import { LANGUAGES } from '@/constants/dictionaries';
 import { Colors } from '@/constants/colors';
 
 export default function WelcomePage() {
+  const navigate = useNavigate();
   const { language } = useLanguageContext();
   const { user } = useAppSelector((state) => state.user);
 
@@ -34,17 +36,28 @@ export default function WelcomePage() {
           }}
         >
           {user ? (
-            <Button variant="outlined" href={RoutePaths.MainPage}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                navigate(RoutePaths.MainPage);
+              }}
+            >
               {LANGUAGES[language].BUTTON_MAIN}
             </Button>
           ) : (
             <>
               <ButtonGroup variant="outlined">
-                <Button href={RoutePaths.SignInPage}>
+                <Button
+                  onClick={() => {
+                    navigate(RoutePaths.SignInPage);
+                  }}
+                >
                   {LANGUAGES[language].BUTTON_SIGNIN}
                 </Button>
                 <Button
-                  href={RoutePaths.SignUpPage}
+                  onClick={() => {
+                    navigate(RoutePaths.SignUpPage);
+                  }}
                   variant="contained"
                   disableElevation
                 >
