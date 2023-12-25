@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type Content = Record<string, string> | null;
+export type HeadersEditorContent = Record<string, string> | null;
 
 interface HeadersEditorState {
-  content: Content;
+  content: HeadersEditorContent;
 }
 
 const initialState: HeadersEditorState = {
@@ -14,7 +14,10 @@ const headersEditorSlice = createSlice({
   name: 'headersEditor',
   initialState,
   reducers: {
-    setHeadersEditorContent: (state, action: PayloadAction<Content>) => {
+    setHeadersEditorContent: (
+      state,
+      action: PayloadAction<HeadersEditorContent>,
+    ) => {
       state.content = action.payload;
     },
   },

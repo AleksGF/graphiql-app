@@ -4,12 +4,13 @@ import { EditorView } from '@codemirror/view';
 import { materialLight, materialDark } from '@uiw/codemirror-theme-material';
 import { useTheme } from '@mui/material';
 import CustomTooltip from './CustomTooltip';
-import { Content } from '@/store/reducers/headersEditorSlice';
+import { HeadersEditorContent } from '@/store/reducers/headersEditorSlice';
+import { VariablesEditorContent } from '@/store/reducers/variablesEditorSlice';
 import { useLanguageContext } from '@/context';
 import { LANGUAGES } from '@/constants/dictionaries';
 
 interface SecondaryEditorProps {
-  setValue: (value: Content) => void;
+  setValue: (value: HeadersEditorContent | VariablesEditorContent) => void;
 }
 
 export default function SecondaryEditor({ setValue }: SecondaryEditorProps) {

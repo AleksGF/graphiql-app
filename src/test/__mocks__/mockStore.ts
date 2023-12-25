@@ -24,6 +24,9 @@ export const initialState: PreloadedState<RootState> = {
   headersEditor: {
     content: null,
   },
+  variablesEditor: {
+    content: null,
+  },
 };
 
 export const stateWithUser: PreloadedState<RootState> = {
@@ -47,6 +50,9 @@ export const stateWithUser: PreloadedState<RootState> = {
     apiSchema: '',
   },
   headersEditor: {
+    content: null,
+  },
+  variablesEditor: {
     content: null,
   },
 };
