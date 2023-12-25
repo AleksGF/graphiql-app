@@ -13,6 +13,8 @@ import VariablesEditor from '@/components/VariablesEditor/VariablesEditor';
 import HeadersEditor from './HeadersEditor/HeadersEditor';
 import EditorAccordion from './EditorAccordion/EditorAccordion';
 import DocDrawer from './DocDrawer/DocDrawer';
+import ErrorMessage from './ErrorMessage/ErrorMessage';
+import SecondaryEditor from './SecondaryEditor/SecondaryEditor';
 
 export {
   Layout,
@@ -30,4 +32,6 @@ export {
   HeadersEditor,
   EditorAccordion,
   DocDrawer,
+  SecondaryEditor,
+  ErrorMessage,
 };

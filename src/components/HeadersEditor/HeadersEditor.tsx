@@ -5,7 +5,7 @@ import {
   setHeadersEditorContent,
 } from '@/store/reducers/headersEditorSlice';
 import Box from '@mui/material/Box';
-import SecondaryEditor from '@/components/SecondaryEditor/SecondaryEditor';
+import { SecondaryEditor } from '@/components';
 
 export default function HeadersEditor() {
   const dispatch = useAppDispatch();

@@ -19,7 +19,7 @@ import {
   addNewEndpoint,
   clearAddingEndpointError,
 } from '@/store/reducers/apiEndpointSlice';
-import ErrorMessage from '@/components/ErrorMessage/ErrorMessage';
+import { ErrorMessage } from '@/components';
 
 export default function EndpointEditor() {
   const dispatch = useAppDispatch();
