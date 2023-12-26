@@ -1,9 +1,8 @@
-import React, { ChangeEvent, useEffect, useRef } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
-  setNewEndpoint,
   setNewEndpointCurrentInput,
-  toggleEndpointEditMode,
+  setEndpointEditMode,
 } from '@/store/reducers/endpointEditorSlice';
 import { useLanguageContext } from '@/context';
 import Box from '@mui/material/Box';
@@ -15,14 +14,24 @@ import ClearIcon from '@mui/icons-material/Clear';
 import InputAdornment from '@mui/material/InputAdornment';
 import Tooltip from '@mui/material/Tooltip';
 import { isUrlValid } from '@/utils/isUrlValid';
-import { LANGUAGES } from '@/constants/dictionaries';
+import { Dictionary, LANGUAGES } from '@/constants/dictionaries';
+import {
+  addNewEndpoint,
+  clearAddingEndpointError,
+} from '@/store/reducers/apiEndpointSlice';
+import { ErrorMessage } from '@/components';
 
 export default function EndpointEditor() {
   const dispatch = useAppDispatch();
 
   const { language } = useLanguageContext();
-  const { isEndpointEditMode, currentEndpoint, newEndpointCurrentInput } =
-    useAppSelector((state) => state.endpointEditor);
+
+  const { isEndpointEditMode, newEndpointCurrentInput } = useAppSelector(
+    (state) => state.endpointEditor,
+  );
+  const { apiUrl, apiAddingError, isApiFetching } = useAppSelector(
+    (state) => state.apiEndpoint,
+  );
 
   const inputFieldRef = useRef<HTMLInputElement>(null);
 
@@ -33,19 +42,25 @@ export default function EndpointEditor() {
   };
 
   const setEditMode = () => {
-    dispatch(toggleEndpointEditMode(true));
+    dispatch(setEndpointEditMode(true));
 
     if (inputFieldRef.current) inputFieldRef.current.focus();
   };
 
   const clearInput = () => {
     dispatch(setNewEndpointCurrentInput(''));
-    dispatch(toggleEndpointEditMode(false));
+    dispatch(setEndpointEditMode(false));
   };
 
   const submitNewEndpoint = () => {
-    dispatch(setNewEndpoint());
+    dispatch(setEndpointEditMode(false));
+    dispatch(setNewEndpointCurrentInput(''));
+    dispatch(addNewEndpoint(newEndpointCurrentInput));
   };
+
+  const clearErrorMessage = useCallback(() => {
+    dispatch(clearAddingEndpointError());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isEndpointEditMode) return;
@@ -60,7 +75,7 @@ export default function EndpointEditor() {
       )
         return;
 
-      dispatch(toggleEndpointEditMode(false));
+      dispatch(setEndpointEditMode(false));
     };
 
     document.addEventListener('click', clickAwayListener);
@@ -70,11 +85,13 @@ export default function EndpointEditor() {
     };
   }, [dispatch, isEndpointEditMode]);
 
+  const apiUrlShown = isApiFetching ? '' : apiUrl;
+
   return (
     <Box id={'endpoint-editor'} sx={{ p: 1, display: 'flex' }}>
       <TextField
         label={LANGUAGES[language].ENDPOINT_INPUT_LABEL}
-        value={isEndpointEditMode ? newEndpointCurrentInput : currentEndpoint}
+        value={isEndpointEditMode ? newEndpointCurrentInput : apiUrlShown}
         onChange={inputHandler}
         focused={isEndpointEditMode}
         inputRef={inputFieldRef}
@@ -101,8 +118,11 @@ export default function EndpointEditor() {
                 arrow
               >
                 <Box>
-                  <IconButton disabled={isSubmitDisabled}>
-                    <DoneIcon onClick={submitNewEndpoint} />
+                  <IconButton
+                    disabled={isSubmitDisabled}
+                    onClick={submitNewEndpoint}
+                  >
+                    <DoneIcon />
                   </IconButton>
                 </Box>
               </Tooltip>
@@ -124,6 +144,16 @@ export default function EndpointEditor() {
         size={'small'}
         fullWidth
       />
+      {!!apiAddingError && (
+        <ErrorMessage
+          message={
+            LANGUAGES[language][apiAddingError as keyof Dictionary] ??
+            LANGUAGES[language].ENDPOINT_ADD_ERROR_DEFAULT
+          }
+          isOpen={true}
+          handleClose={clearErrorMessage}
+        />
+      )}
     </Box>
   );
 }

@@ -22,6 +22,14 @@ export enum Keys {
   TOOLTIP_ENDPOINT_CLEAR = 'TOOLTIP_ENDPOINT_CLEAR',
   TOOLTIP_ENDPOINT_SUBMIT_OK = 'TOOLTIP_ENDPOINT_SUBMIT_OK',
   TOOLTIP_ENDPOINT_SUBMIT_INVALID = 'TOOLTIP_ENDPOINT_SUBMIT_INVALID',
+  ENDPOINT_ADD_ERROR_DEFAULT = 'ENDPOINT_ADD_ERROR_DEFAULT',
+  REQUEST_ERROR_UNKNOWN = 'REQUEST_ERROR_UNKNOWN',
+  REQUEST_ERROR_BASE = 'REQUEST_ERROR_BASE',
+  REQUEST_ERROR_100 = 'REQUEST_ERROR_100',
+  REQUEST_ERROR_300 = 'REQUEST_ERROR_300',
+  REQUEST_ERROR_400 = 'REQUEST_ERROR_400',
+  REQUEST_ERROR_401 = 'REQUEST_ERROR_401',
+  REQUEST_ERROR_500 = 'REQUEST_ERROR_500',
   TITLE_WELCOME = 'TITLE_WELCOME',
   TITLE_WELCOME_2 = 'TITLE_WELCOME_2',
   TEXT_WELCOME = 'TEXT_WELCOME',
@@ -59,6 +67,11 @@ export enum Keys {
   SIGNUP_TITLE = 'SIGNUP_TITLE',
   SIGNUP_LINK = 'SIGNUP_LINK',
   SIGNUP_MESSAGE = 'SIGNUP_MESSAGE',
+  QUERY_EDITOR_PLACEHOLDER = 'QUERY_EDITOR_PLACEHOLDER',
+  RESPONSE_VIEWER_PLACEHOLDER = 'RESPONSE_VIEWER_PLACEHOLDER',
+  HEADERS_ENTER_NOT_VALID = 'HEADERS_ENTER_NOT_VALID',
+  HEADERS_SERVER_NOT_ACCEPT_ANY = 'HEADERS_SERVER_NOT_ACCEPT_ANY',
+  HEADERS_SERVER_ACCEPT_ONLY = 'HEADERS_SERVER_ACCEPT_ONLY',
 }
 
 export type Dictionary = Record<keyof typeof Keys, string>;
@@ -85,6 +98,14 @@ const EN: Dictionary = {
   [Keys.TOOLTIP_ENDPOINT_CLEAR]: 'Clear input',
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_OK]: 'Submit new endpoint',
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_INVALID]: 'You should provide full correct URL',
+  [Keys.ENDPOINT_ADD_ERROR_DEFAULT]: 'Error while adding new endpoint',
+  [Keys.REQUEST_ERROR_UNKNOWN]: 'Something went wrong',
+  [Keys.REQUEST_ERROR_BASE]: 'Api request error',
+  [Keys.REQUEST_ERROR_100]: 'Api request error',
+  [Keys.REQUEST_ERROR_300]: 'Server redirect request',
+  [Keys.REQUEST_ERROR_400]: 'Request error',
+  [Keys.REQUEST_ERROR_401]: 'Authenticate header must be added',
+  [Keys.REQUEST_ERROR_500]: 'Server error',
   [Keys.TITLE_WELCOME]: 'Welcome',
   [Keys.TITLE_WELCOME_2]: "It's our clone of ",
   [Keys.TEXT_WELCOME]:
@@ -129,6 +150,11 @@ const EN: Dictionary = {
   [Keys.SIGNUP_TITLE]: 'Sign Up',
   [Keys.SIGNUP_LINK]: 'Already have an account? Sign in',
   [Keys.SIGNUP_MESSAGE]: 'This email already exists.',
+  [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Input your GraphQL query here.',
+  [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Here will be server response."}',
+  [Keys.HEADERS_ENTER_NOT_VALID]: 'Not valid input:',
+  [Keys.HEADERS_SERVER_NOT_ACCEPT_ANY]: 'Server does not accept any Headers',
+  [Keys.HEADERS_SERVER_ACCEPT_ONLY]: 'Server accept only next Headers:',
 };
 
 const RU: Dictionary = {
@@ -151,6 +177,14 @@ const RU: Dictionary = {
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_OK]: 'Подтвердить изменение',
   [Keys.TOOLTIP_ENDPOINT_SUBMIT_INVALID]:
     'Необходимо ввести полный корректный адрес',
+  [Keys.ENDPOINT_ADD_ERROR_DEFAULT]: 'Не удалось добавить новый адрес',
+  [Keys.REQUEST_ERROR_UNKNOWN]: 'Что-то пошло не так',
+  [Keys.REQUEST_ERROR_BASE]: 'Ошибка при запросе данных сервера',
+  [Keys.REQUEST_ERROR_100]: 'Ошибка при запросе данных сервера',
+  [Keys.REQUEST_ERROR_300]: 'Сервер перенаправил запрос',
+  [Keys.REQUEST_ERROR_400]: 'Ошибка при отправке запроса на сервер',
+  [Keys.REQUEST_ERROR_401]: 'Необходима аутентификация',
+  [Keys.REQUEST_ERROR_500]: 'Ошибка на стороне сервера',
   [Keys.TITLE_WELCOME]: 'Добро пожаловать',
   [Keys.TITLE_WELCOME_2]: 'Это наш клон ',
   [Keys.TEXT_WELCOME]:
@@ -196,6 +230,12 @@ const RU: Dictionary = {
   [Keys.SIGNUP_TITLE]: 'Регистрация',
   [Keys.SIGNUP_LINK]: 'Уже есть аккаунт? Войти',
   [Keys.SIGNUP_MESSAGE]: 'Данный адрес почты уже используется',
+  [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Введите свой GraphQL запрос.',
+  [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Здесь будет ответ сервера."}',
+  [Keys.HEADERS_ENTER_NOT_VALID]: 'Не валидный ввод:',
+  [Keys.HEADERS_SERVER_NOT_ACCEPT_ANY]:
+    'Сервер не принимает никаких заголовков',
+  [Keys.HEADERS_SERVER_ACCEPT_ONLY]: 'Сервер принимает следующие заголовки:',
 };
 
 export const LANGUAGES: Dictionaries = { EN, RU };

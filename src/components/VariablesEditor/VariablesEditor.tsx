@@ -1,4 +1,25 @@
-// TODO implement Variables component
+import React, { useCallback } from 'react';
+import { useAppDispatch } from '@/hooks/hooks';
+import {
+  VariablesEditorContent,
+  setVariablesEditorContent,
+} from '@/store/reducers/variablesEditorSlice';
+import Box from '@mui/material/Box';
+import { SecondaryEditor } from '@/components';
+
 export default function VariablesEditor() {
-  return <div>Here will be Variables component</div>;
+  const dispatch = useAppDispatch();
+
+  const setValue = useCallback(
+    (value: VariablesEditorContent) => {
+      dispatch(setVariablesEditorContent(value));
+    },
+    [dispatch],
+  );
+
+  return (
+    <Box>
+      <SecondaryEditor setValue={setValue} />
+    </Box>
+  );
 }

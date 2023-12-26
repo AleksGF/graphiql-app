@@ -9,10 +9,21 @@ export const initialState: PreloadedState<RootState> = {
     activeEditorTab: 0,
   },
   endpointEditor: {
-    currentEndpoint:
-      'https://swapi-graphql.netlify.app/.netlify/functions/index',
     isEndpointEditMode: false,
     newEndpointCurrentInput: '',
+  },
+  queryEditor: { content: '' },
+  responseViewer: { content: '' },
+  apiEndpoint: {
+    isApiFetching: false,
+    apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
+    apiAddingError: null,
+  },
+  headersEditor: {
+    content: null,
+  },
+  variablesEditor: {
+    content: null,
   },
 };
 
@@ -24,9 +35,20 @@ export const stateWithUser: PreloadedState<RootState> = {
     activeEditorTab: 0,
   },
   endpointEditor: {
-    currentEndpoint:
-      'https://swapi-graphql.netlify.app/.netlify/functions/index',
     isEndpointEditMode: false,
     newEndpointCurrentInput: '',
+  },
+  queryEditor: { content: '' },
+  responseViewer: { content: '' },
+  apiEndpoint: {
+    isApiFetching: false,
+    apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
+    apiAddingError: null,
+  },
+  headersEditor: {
+    content: null,
+  },
+  variablesEditor: {
+    content: null,
   },
 };
