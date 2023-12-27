@@ -13,6 +13,7 @@ import VariablesEditor from '@/components/VariablesEditor/VariablesEditor';
 import HeadersEditor from './HeadersEditor/HeadersEditor';
 import EditorAccordion from './EditorAccordion/EditorAccordion';
 import DocDrawer from './DocDrawer/DocDrawer';
+import UserForm from './forms/userForm/UserForm';
 import ErrorMessage from './ErrorMessage/ErrorMessage';
 import SecondaryEditor from './SecondaryEditor/SecondaryEditor';
 import Loader from './Loader/Loader';
@@ -33,6 +34,7 @@ export {
   HeadersEditor,
   EditorAccordion,
   DocDrawer,
+  UserForm,
   SecondaryEditor,
   ErrorMessage,
   Loader,
