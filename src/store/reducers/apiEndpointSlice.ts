@@ -9,6 +9,7 @@ import { defaultApiQuery, HTTP_STATUS } from '@/constants/api';
 import { RootState } from '@/store/store';
 import { AxiosError } from 'axios';
 import { getErrorTextKey } from '@/utils/getErrorTextKey';
+import { Keys } from '@/constants/dictionaries';
 
 interface ApiEndpoint {
   isApiFetching: boolean;
@@ -96,7 +97,7 @@ const apiEndpointSlice = createSlice({
         state.apiAddingError =
           typeof action.payload === 'string'
             ? action.payload
-            : action.error.message ?? '';
+            : action.error.message ?? Keys.REQUEST_ERROR_UNKNOWN;
         state.isApiFetching = false;
       },
     );
