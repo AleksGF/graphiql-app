@@ -42,10 +42,13 @@ export const fetchApi = createAsyncThunk(
       const resp = await axios(apiUrl, {
         data: { query, variables },
       });
-      console.log(resp);
-      return JSON.stringify(resp.data.data, null, 2);
+
+      if (resp.data.data) return JSON.stringify(resp.data.data, null, 2);
+
+      if (resp.data.errors) return resp.data.errors[0].message ?? '';
+
+      return '';
     } catch (error) {
-      console.log(error);
       if (
         error instanceof AxiosError &&
         error.response?.data?.errors &&
@@ -69,6 +72,7 @@ const responseViewerSlice = createSlice({
   reducers: {
     clearFetchError: (state) => {
       state.fetchError = null;
+      state.content = '';
     },
   },
   extraReducers: (builder) => {
