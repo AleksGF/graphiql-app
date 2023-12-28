@@ -11,7 +11,7 @@ const initialState: VariablesEditorState = {
 };
 
 const variablesEditorSlice = createSlice({
-  name: 'headersEditor',
+  name: 'variablesEditor',
   initialState,
   reducers: {
     setVariablesEditorContent: (

@@ -10,18 +10,26 @@ import { useLanguageContext } from '@/context';
 import { LANGUAGES } from '@/constants/dictionaries';
 
 interface SecondaryEditorProps {
+  initialValue: string;
   setValue: (value: HeadersEditorContent | VariablesEditorContent) => void;
 }
 
-export default function SecondaryEditor({ setValue }: SecondaryEditorProps) {
+export default function SecondaryEditor({
+  initialValue,
+  setValue,
+}: SecondaryEditorProps) {
   const { language } = useLanguageContext();
   const { palette } = useTheme();
 
+  const [currentValue, setCurrentValue] = useState<string>(initialValue);
   const [parseError, setParseError] = useState<string | null>(null);
 
   const onChange = (value: string) => {
+    setCurrentValue(value);
+
     if (!value.trim().length) {
       setParseError(null);
+      setValue(null);
 
       return;
     }
@@ -39,6 +47,7 @@ export default function SecondaryEditor({ setValue }: SecondaryEditorProps) {
   return (
     <>
       <CodeMirror
+        value={currentValue}
         theme={palette.mode === 'light' ? materialLight : materialDark}
         onChange={onChange}
         extensions={[EditorView.lineWrapping]}

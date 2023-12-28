@@ -42,9 +42,10 @@ export const fetchApi = createAsyncThunk(
       const resp = await axios(apiUrl, {
         data: { query, variables },
       });
-
+      console.log(resp);
       return JSON.stringify(resp.data.data, null, 2);
     } catch (error) {
+      console.log(error);
       if (
         error instanceof AxiosError &&
         error.response?.data?.errors &&
