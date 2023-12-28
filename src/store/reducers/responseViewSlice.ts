@@ -9,6 +9,7 @@ import { prepareRequest } from '@/utils/prepareRequest';
 import { Keys } from '@/constants/dictionaries';
 import { getErrorTextKey } from '@/utils/getErrorTextKey';
 import { AxiosError } from 'axios';
+import { prettifyGraphQl } from '@/utils/prettifyGraphQl';
 
 export interface ResponseViewerState {
   content: string;
@@ -26,11 +27,13 @@ export const fetchApi = createAsyncThunk(
   'responseViewer/fetchApi',
   async (_, { getState, rejectWithValue }) => {
     const {
-      queryEditor: { content: query },
+      queryEditor: { content: queryText },
       headersEditor: { content: headers },
       variablesEditor: { content: variables },
       apiEndpoint: { apiUrl },
     } = getState() as RootState;
+
+    const query = prettifyGraphQl(queryText);
 
     if (!apiUrl) return rejectWithValue(Keys.REQUEST_ERROR_NO_ENDPOINT);
 

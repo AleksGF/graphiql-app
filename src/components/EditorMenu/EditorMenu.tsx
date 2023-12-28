@@ -41,7 +41,6 @@ function EditorMenu() {
       {
         tooltip: LANGUAGES[language].TOOLTIP_EXECUTE,
         handler: () => {
-          dispatch(prettifyContent());
           dispatch(fetchApi());
         },
         child: <PlayCircleOutlineIcon />,
