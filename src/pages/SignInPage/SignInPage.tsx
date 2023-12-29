@@ -1,19 +1,24 @@
-import UserForm from '@/components/forms/userForm/UserForm';
+import { UserForm } from '@/components';
+import { Link as RouterLink } from 'react-router-dom';
+import { useLanguageContext } from '@/context';
+import { LANGUAGES } from '@/constants/dictionaries';
+import { RoutePaths } from '@/routes/routes';
 import { signIn } from '@/services/authService';
+import { Container, Link } from '@mui/material';
 
 export default function SignInPage() {
-  const handleSubmit = async (email: string, pass: string) => {
-    try {
-      await signIn(email, pass);
-    } catch (e) {
-      console.log(e); // TODO Implement user friendly message
-    }
-  };
+  const { language } = useLanguageContext();
 
   return (
-    <main>
-      <h2>Login</h2>
-      <UserForm onSubmit={handleSubmit} />
-    </main>
+    <Container component="main" maxWidth="xs" sx={{ flex: 1, mb: 8 }}>
+      <UserForm
+        title={LANGUAGES[language].SIGNIN_TITLE}
+        errorMessage={LANGUAGES[language].SIGNIN_MESSAGE}
+        authHandler={signIn}
+      />
+      <Link component={RouterLink} to={RoutePaths.SignUpPage} variant="body2">
+        {LANGUAGES[language].SIGNIN_LINK}
+      </Link>
+    </Container>
   );
 }
