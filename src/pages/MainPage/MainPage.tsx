@@ -55,12 +55,15 @@ export default function MainPage() {
               background: palette.background.default,
             })}
           >
-            <Box sx={{ flexGrow: '1' }}>
+            <Box sx={{ flexGrow: '1' }} data-testid={'QueryEditor'}>
               <QueryEditor />
             </Box>
             <EditorAccordion />
           </Box>
-          <Box sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}>
+          <Box
+            sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}
+            data-testid={'ResponseViewer'}
+          >
             <ResponseViewer />
           </Box>
         </Box>

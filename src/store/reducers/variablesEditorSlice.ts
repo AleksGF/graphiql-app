@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type VariablesEditorContent = Record<string, string> | null;
 
-interface VariablesEditorState {
+export interface VariablesEditorState {
   content: VariablesEditorContent;
 }
 

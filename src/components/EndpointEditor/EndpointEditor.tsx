@@ -88,7 +88,11 @@ export default function EndpointEditor() {
   const apiUrlShown = isApiFetching ? '' : apiUrl;
 
   return (
-    <Box id={'endpoint-editor'} sx={{ p: 1, display: 'flex' }}>
+    <Box
+      id={'endpoint-editor'}
+      sx={{ p: 1, display: 'flex' }}
+      data-testid={'EndpointEditor'}
+    >
       <TextField
         label={LANGUAGES[language].ENDPOINT_INPUT_LABEL}
         value={isEndpointEditMode ? newEndpointCurrentInput : apiUrlShown}

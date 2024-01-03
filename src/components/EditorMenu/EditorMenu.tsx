@@ -25,17 +25,20 @@ function EditorMenu() {
     tooltip: string;
     handler: VoidFunction;
     child: ReactElement;
+    testId: string;
   }[] = useMemo(
     () => [
       {
         tooltip: LANGUAGES[language].TOOLTIP_SHOW_DOC,
         handler: openDrawer,
         child: <MenuBookIcon />,
+        testId: 'ShowDoc',
       },
       {
         tooltip: LANGUAGES[language].TOOLTIP_EXECUTE,
         handler: () => {},
         child: <CleaningServicesIcon />,
+        testId: 'ExecuteQuery',
       },
       {
         tooltip: LANGUAGES[language].TOOLTIP_PRETTIFY,
@@ -43,6 +46,7 @@ function EditorMenu() {
           dispatch(prettifyContent());
         },
         child: <PlayCircleOutlineIcon />,
+        testId: 'PrettifyQuery',
       },
     ],
     [dispatch, language, openDrawer],
@@ -50,7 +54,7 @@ function EditorMenu() {
 
   return (
     <>
-      <Box>
+      <Box data-testid={'EditorMenu'}>
         <List
           sx={({ breakpoints }) => ({
             display: 'flex',
@@ -65,6 +69,7 @@ function EditorMenu() {
               key={index}
               clickHandler={item.handler}
               tooltip={item.tooltip}
+              testId={item.testId}
             >
               {item.child}
             </MenuItem>

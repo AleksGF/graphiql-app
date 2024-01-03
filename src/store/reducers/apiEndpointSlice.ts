@@ -10,7 +10,7 @@ import { RootState } from '@/store/store';
 import { AxiosError } from 'axios';
 import { getErrorTextKey } from '@/utils/getErrorTextKey';
 
-interface ApiEndpoint {
+export interface ApiEndpoint {
   isApiFetching: boolean;
   apiUrl: string;
   apiAddingError: string | null;

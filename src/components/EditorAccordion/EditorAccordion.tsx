@@ -88,6 +88,7 @@ export default function EditorAccordion() {
         return;
       }}
       sx={{ '& .MuiButtonBase-root': { minHeight: '2em' } }}
+      data-testid={'EditorAccordion'}
     >
       <AccordionSummary
         sx={{

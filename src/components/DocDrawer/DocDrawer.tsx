@@ -33,8 +33,13 @@ export default function DocDrawer() {
         flexDirection: 'column',
         alignItems: 'flex-start',
       }}
+      data-testid={'DocDrawer'}
     >
-      <IconButton sx={{ alignSelf: 'flex-end' }} onClick={closeDrawer}>
+      <IconButton
+        sx={{ alignSelf: 'flex-end' }}
+        onClick={closeDrawer}
+        data-testid={'CloseDocDrawer'}
+      >
         <CloseRoundedIcon />
       </IconButton>
       <Box sx={{ p: 1 }}>
