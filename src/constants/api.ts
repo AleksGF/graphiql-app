@@ -32,3 +32,35 @@ export const typesApiQuery = `
             }
           }
         `;
+
+export const docsApiQuery = `
+{
+  __schema {
+    types {
+      name
+      description
+      fields {
+        name
+        description
+        type {
+          name
+          kind
+          ofType {
+            name
+          }
+        }
+        args {
+          name
+          type {
+            name
+            kind
+            ofType {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
