@@ -157,7 +157,6 @@ const EN: Dictionary = {
   [Keys.SIGNUP_TITLE]: 'Sign Up',
   [Keys.SIGNUP_LINK]: 'Already have an account? Sign in',
   [Keys.SIGNUP_MESSAGE]: 'This email already exists.',
-  [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Input your GraphQL query here.',
   [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Here will be server response."}',
   [Keys.HEADERS_ENTER_NOT_VALID]: 'Not valid input:',
   [Keys.HEADERS_SERVER_NOT_ACCEPT_ANY]: 'Server does not accept any Headers',
@@ -241,7 +240,6 @@ const RU: Dictionary = {
   [Keys.SIGNUP_TITLE]: 'Регистрация',
   [Keys.SIGNUP_LINK]: 'Уже есть аккаунт? Войти',
   [Keys.SIGNUP_MESSAGE]: 'Данный адрес почты уже используется',
-  [Keys.QUERY_EDITOR_PLACEHOLDER]: '# Введите свой GraphQL запрос.',
   [Keys.RESPONSE_VIEWER_PLACEHOLDER]: '{"Здесь будет ответ сервера."}',
   [Keys.HEADERS_ENTER_NOT_VALID]: 'Не валидный ввод:',
   [Keys.HEADERS_SERVER_NOT_ACCEPT_ANY]:
