@@ -10,6 +10,7 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import MenuItem from './MenuItem';
 import { LANGUAGES } from '@/constants/dictionaries';
 import { prettifyContent } from '@/store/reducers/queryEditorSlice';
+import { fetchApi } from '@/store/reducers/responseViewSlice';
 
 function EditorMenu() {
   const dispatch = useAppDispatch();
@@ -19,8 +20,6 @@ function EditorMenu() {
     dispatch(toggleIsDocDrawerOpen(true));
   }, [dispatch]);
 
-  // TODO Add prettify handler
-  // TODO Add make request handler
   const menuItemList: {
     tooltip: string;
     handler: VoidFunction;
@@ -35,15 +34,17 @@ function EditorMenu() {
         testId: 'ShowDoc',
       },
       {
-        tooltip: LANGUAGES[language].TOOLTIP_EXECUTE,
-        handler: () => {},
+        tooltip: LANGUAGES[language].TOOLTIP_PRETTIFY,
+        handler: () => {
+          dispatch(prettifyContent());
+        },
         child: <CleaningServicesIcon />,
         testId: 'ExecuteQuery',
       },
       {
-        tooltip: LANGUAGES[language].TOOLTIP_PRETTIFY,
+        tooltip: LANGUAGES[language].TOOLTIP_EXECUTE,
         handler: () => {
-          dispatch(prettifyContent());
+          dispatch(fetchApi());
         },
         child: <PlayCircleOutlineIcon />,
         testId: 'PrettifyQuery',

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useAppDispatch } from '@/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
   HeadersEditorContent,
   setHeadersEditorContent,
@@ -9,6 +9,9 @@ import { SecondaryEditor } from '@/components';
 
 export default function HeadersEditor() {
   const dispatch = useAppDispatch();
+  const { content } = useAppSelector((state) => state.headersEditor);
+
+  const initialValue = content ? JSON.stringify(content, null, 2) : '';
 
   const setValue = useCallback(
     (value: HeadersEditorContent) => {
@@ -19,7 +22,7 @@ export default function HeadersEditor() {
 
   return (
     <Box>
-      <SecondaryEditor setValue={setValue} />
+      <SecondaryEditor initialValue={initialValue} setValue={setValue} />
     </Box>
   );
 }

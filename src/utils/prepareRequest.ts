@@ -7,7 +7,7 @@ export const prepareRequest = (
 ): AxiosInstance => {
   const method = defaultApiMethod;
 
-  const headers = Object.assign(userHeaders ?? {}, defaultApiHeaders);
+  const headers = { ...(userHeaders ?? {}), ...defaultApiHeaders };
 
   return axios.create({
     method,
