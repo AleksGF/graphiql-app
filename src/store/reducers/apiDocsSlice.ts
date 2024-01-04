@@ -1,7 +1,7 @@
 import { prepareRequest } from '@/utils/prepareRequest';
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store/store';
-import { HTTP_STATUS, docsApiQuery } from '@/constants/api';
+import { docsApiQuery } from '@/constants/api';
 
 interface ApiDocsType {
   name: string | null;
