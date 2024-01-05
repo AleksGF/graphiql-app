@@ -34,7 +34,7 @@ describe('SecondaryEditor: ', () => {
     const mockSetValue = vi.fn();
 
     const { getByTestId } = customRender(
-      <SecondaryEditor setValue={mockSetValue} />,
+      <SecondaryEditor initialValue={''} setValue={mockSetValue} />,
       {},
     );
 
@@ -59,7 +59,7 @@ describe('SecondaryEditor: ', () => {
 
   it('should render error message with incorrect input', () => {
     const { getByTestId, queryAllByRole } = customRender(
-      <SecondaryEditor setValue={vi.fn()} />,
+      <SecondaryEditor initialValue={''} setValue={vi.fn()} />,
       {},
     );
 
