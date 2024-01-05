@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useColorModeContext, useLanguageContext } from '@/context';
-import { LANGUAGES } from '@/constants/dictionaries';
+import { Langs, LANGUAGES } from '@/constants/dictionaries';
 import { DarkMode, Language, LightMode } from '@mui/icons-material';
 import {
   Button,
@@ -16,17 +16,20 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { RoutePaths } from '@/routes/routes';
 import { useAppSelector } from '@/hooks/hooks';
 
-const HeaderStyled = styled('header')({
+const HeaderStyled = styled('header')(({ theme: { breakpoints } }) => ({
   display: 'flex',
   padding: '1em',
   justifyContent: 'space-between',
-});
+  [breakpoints.down('sm')]: {
+    flexWrap: 'wrap',
+  },
+}));
 
 export default function Header() {
   const theme = useTheme();
   const colorMode = useColorModeContext();
   const { user } = useAppSelector((state) => state.user);
-  const { language } = useLanguageContext();
+  const { language, setLanguage } = useLanguageContext();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = !!anchorEl;
@@ -59,8 +62,18 @@ export default function Header() {
           <Language />
         </Button>
         <Menu open={open} onClose={handleLangClose} anchorEl={anchorEl}>
-          <MenuItem>English</MenuItem>
-          <MenuItem>Russian</MenuItem>
+          {Object.keys(Langs).map((lang) => (
+            <MenuItem
+              key={lang}
+              selected={lang === language}
+              onClick={() => {
+                setLanguage(lang as Langs);
+                setAnchorEl(null);
+              }}
+            >
+              {LANGUAGES[lang as Langs].NAME}
+            </MenuItem>
+          ))}
         </Menu>
 
         {user && (
