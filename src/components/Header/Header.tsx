@@ -15,6 +15,7 @@ import { Logo } from '@/components';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { RoutePaths } from '@/routes/routes';
 import { useAppSelector } from '@/hooks/hooks';
+import { logOut } from '@/services/authService';
 
 const HeaderStyled = styled('header')(({ theme: { breakpoints } }) => ({
   display: 'flex',
@@ -44,8 +45,11 @@ export default function Header() {
     setAnchorEl(null);
   };
 
+  const handleSignOut = async () => {
+    await logOut();
+  };
+
   // TODO Make it sticky with animation
-  // TODO SignOut
   return (
     <HeaderStyled>
       <Logo href={RoutePaths.IndexPage}></Logo>
@@ -79,7 +83,10 @@ export default function Header() {
         {user && (
           <>
             <Divider orientation="vertical" sx={{ mx: 1 }} />
-            <Button title={LANGUAGES[language].BUTTON_SIGNOUT}>
+            <Button
+              title={LANGUAGES[language].BUTTON_SIGNOUT}
+              onClick={handleSignOut}
+            >
               <LogoutIcon />
             </Button>
           </>
