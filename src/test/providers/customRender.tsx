@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppStore, RootState } from '@/store/store';
 import userReducer from '@/store/reducers/userSlice';
 import appViewReducer from '@/store/reducers/appViewSlice';
+import apiDocsReducer from '@/store/reducers/apiDocsSlice';
 import EndpointEditorReducer from '@/store/reducers/endpointEditorSlice';
 import queryEditorReducer from '@/store/reducers/queryEditorSlice';
 import responseViewerReducer from '@/store/reducers/responseViewSlice';
@@ -51,6 +52,7 @@ export const customRender = (
         apiEndpoint: apiEndpointReducer,
         headersEditor: headersEditorReducer,
         variablesEditor: variablesEditorReducer,
+        apiDocs: apiDocsReducer,
       },
       preloadedState,
     }) as AppStore,

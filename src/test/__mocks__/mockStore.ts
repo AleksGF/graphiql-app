@@ -25,6 +25,12 @@ export const initialState: PreloadedState<RootState> = {
   variablesEditor: {
     content: null,
   },
+  apiDocs: {
+    isApiDocsFetching: false,
+    apiTypesList: null,
+    apiDocsError: null,
+    apiDocsTypeDetailedInfo: null,
+  },
 };
 
 export const stateWithUser: PreloadedState<RootState> = {
@@ -50,5 +56,11 @@ export const stateWithUser: PreloadedState<RootState> = {
   },
   variablesEditor: {
     content: null,
+  },
+  apiDocs: {
+    isApiDocsFetching: false,
+    apiTypesList: null,
+    apiDocsError: null,
+    apiDocsTypeDetailedInfo: null,
   },
 };
