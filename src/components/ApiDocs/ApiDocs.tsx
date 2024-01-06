@@ -3,12 +3,13 @@ import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import {
   ApiDocsFieldEntry,
   ApiDocsInputFieldEntry,
+  TypeKind,
   clearApiDocsTypeDetailedInfo,
   fetchApiTypeDetailedInfo,
 } from '@/store/reducers/apiDocsSlice';
 
 import { Box, Divider, Typography, Link } from '@mui/material';
-import React, { ReactNode } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 //TODO: Refactor all render functions. Probably it should be recursive.
@@ -48,7 +49,7 @@ export default function ApiDocs() {
   ): ReactNode => {
     const { name, type, args } = field as ApiDocsFieldEntry;
 
-    if (type.kind !== 'NON_NULL' && type.kind !== 'LIST') {
+    if (type.kind !== TypeKind.NON_NULL && type.kind !== TypeKind.LIST) {
       if (type && (!args || args.length === 0)) {
         return (
           <>
@@ -70,7 +71,7 @@ export default function ApiDocs() {
             {`${name}(`}
             {args.map((arg) => {
               return (
-                <>
+                <Fragment key={arg.name}>
                   <br />
                   {`  ${arg.name}: `}
                   <Link
@@ -80,7 +81,7 @@ export default function ApiDocs() {
                   >
                     {arg.type.name}
                   </Link>
-                </>
+                </Fragment>
               );
             })}
             <br />
@@ -97,7 +98,7 @@ export default function ApiDocs() {
       }
     }
 
-    if (type.kind === 'LIST' && type.ofType) {
+    if (type.kind === TypeKind.LIST && type.ofType) {
       return (
         <>
           {`${name}: `}[
@@ -113,7 +114,7 @@ export default function ApiDocs() {
       );
     }
 
-    if (type.kind === 'NON_NULL' && type.ofType) {
+    if (type.kind === TypeKind.NON_NULL && type.ofType) {
       return (
         <>
           {`${name}: `}

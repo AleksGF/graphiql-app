@@ -16,32 +16,33 @@ interface ApiDocsTypesList {
   types: ApiDocsTypeListEntry[];
 }
 
-type ApiDocsTypeKind =
-  | 'SCALAR'
-  | 'OBJECT'
-  | 'INTERFACE'
-  | 'UNION'
-  | 'ENUM'
-  | 'INPUT_OBJECT'
-  | 'LIST'
-  | 'NON_NULL';
+export enum TypeKind {
+  SCALAR = 'SCALAR',
+  OBJECT = 'OBJECT',
+  INTERFACE = 'INTERFACE',
+  UNION = 'UNION',
+  ENUM = 'ENUM',
+  INPUT_OBJECT = 'INPUT_OBJECT',
+  LIST = 'LIST',
+  NON_NULL = 'NON_NULL',
+}
 
 export interface ApiDocsFieldEntry {
   name: string;
   description: string | null;
   type: {
     name: string | null;
-    kind: ApiDocsTypeKind;
+    kind: TypeKind;
     ofType: {
       name: string | null;
-      kind: ApiDocsTypeKind;
+      kind: TypeKind;
     } | null;
   };
   args: {
     name: string;
     type: {
       name: string | null;
-      kind: ApiDocsTypeKind;
+      kind: TypeKind;
     };
   }[];
 }
@@ -51,10 +52,10 @@ export interface ApiDocsInputFieldEntry {
   description: string | null;
   type: {
     name: string;
-    kind: ApiDocsTypeKind;
+    kind: TypeKind;
     ofType: {
       name: string;
-      kind: ApiDocsTypeKind;
+      kind: TypeKind;
     } | null;
   }[];
 }
