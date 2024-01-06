@@ -1,93 +1,208 @@
 import { prepareRequest } from '@/utils/prepareRequest';
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store/store';
-import { docsApiQuery } from '@/constants/api';
+import { typesApiQuery } from '@/constants/api';
+import { Keys } from '@/constants/dictionaries';
 
-interface ApiDocsType {
-  name: string | null;
-  kind: string;
-  ofType: {
+interface ApiDocsTypeListEntry {
+  name: string;
+}
+
+interface ApiDocsEnumValuesEntry {
+  name: string;
+}
+
+interface ApiDocsTypesList {
+  types: ApiDocsTypeListEntry[];
+}
+
+type ApiDocsTypeKind =
+  | 'SCALAR'
+  | 'OBJECT'
+  | 'INTERFACE'
+  | 'UNION'
+  | 'ENUM'
+  | 'INPUT_OBJECT'
+  | 'LIST'
+  | 'NON_NULL';
+
+export interface ApiDocsFieldEntry {
+  name: string;
+  description: string | null;
+  type: {
+    name: string | null;
+    kind: ApiDocsTypeKind;
+    ofType: {
+      name: string | null;
+      kind: ApiDocsTypeKind;
+    } | null;
+  };
+  args: {
     name: string;
-  } | null;
+    type: {
+      name: string | null;
+      kind: ApiDocsTypeKind;
+    };
+  }[];
 }
 
-interface ApiDocsArg {
-  name: string | null;
-  type: ApiDocsType;
-}
-
-export interface ApiDocsTypeField {
+export interface ApiDocsInputFieldEntry {
   name: string;
   description: string | null;
-  type: ApiDocsType;
-  args: ApiDocsArg[];
+  type: {
+    name: string;
+    kind: ApiDocsTypeKind;
+    ofType: {
+      name: string;
+      kind: ApiDocsTypeKind;
+    } | null;
+  }[];
 }
 
-interface ApiDocsTypeEntry {
+interface ApiDocsTypeInfo {
   name: string;
   description: string | null;
-  fields: ApiDocsTypeField[];
-}
-
-export interface ApiDocs {
-  types: ApiDocsTypeEntry[];
+  fields: ApiDocsFieldEntry[];
+  inputFields: ApiDocsInputFieldEntry[];
+  enumValues: ApiDocsEnumValuesEntry[] | null;
 }
 
 interface ApiDocsState {
   isApiDocsFetching: boolean;
-  apiDocs: ApiDocs | null;
+  apiTypesList: ApiDocsTypesList | null;
   apiDocsError: string | null;
+  apiDocsTypeDetailedInfo: ApiDocsTypeInfo | null;
 }
 
 const initialState: ApiDocsState = {
   isApiDocsFetching: false,
-  apiDocs: null,
+  apiTypesList: null,
   apiDocsError: null,
+  apiDocsTypeDetailedInfo: null,
 };
 
-// TODO: Handle errors
-// TODO: Fetch on sucessfull endpoint change
-
-export const fetchApiDocs = createAsyncThunk(
-  'apiDocs/fetchApiDocs',
+export const fetchApiTypesList = createAsyncThunk(
+  'apiDocs/fetchApiTypesList',
   async (endpointUrl: string, { getState }) => {
     const headers = (getState() as RootState).headersEditor.content;
 
     const axios = prepareRequest(headers);
 
     const response = await axios(endpointUrl, {
-      data: { query: docsApiQuery },
+      data: { query: typesApiQuery },
     });
 
-    console.log('DOCS: ', response.data.data.__schema, typeof response.data);
-
     return response.data.data.__schema;
+  },
+);
+
+export const fetchApiTypeDetailedInfo = createAsyncThunk(
+  'apiDocs/fetchApiTypeDetailedInfo',
+  async (args: { endpointUrl: string; type: string }, { getState }) => {
+    const { endpointUrl, type } = args;
+
+    const headers = (getState() as RootState).headersEditor.content;
+
+    const axios = prepareRequest(headers);
+
+    const response = await axios(endpointUrl, {
+      data: {
+        query: `
+      {
+        __type(name: "${type}") {
+          name
+          description
+          inputFields {
+            description
+            name
+            type {
+              name
+              kind
+              ofType {
+                name
+                kind
+              }
+            }
+          }
+          fields {
+            description
+            name
+            type {
+              name
+              kind
+              ofType {
+                name
+                kind
+              }
+            }
+            args {
+              name
+              type {
+                name
+                kind
+              }
+            }
+          }
+          enumValues {
+            name
+          }
+        }
+      }`,
+      },
+    });
+
+    return response.data.data.__type;
   },
 );
 
 const apiDocsSlice = createSlice({
   name: 'apiDocs',
   initialState,
-  reducers: {},
+  reducers: {
+    clearApiDocsTypeDetailedInfo: (state) => {
+      state.apiDocsTypeDetailedInfo = null;
+    },
+  },
   extraReducers(builder) {
-    builder.addCase(fetchApiDocs.pending, (state) => {
+    builder.addCase(fetchApiTypesList.pending, (state) => {
       state.isApiDocsFetching = true;
       state.apiDocsError = null;
     });
     builder.addCase(
-      fetchApiDocs.fulfilled,
-      (state, action: PayloadAction<ApiDocs>) => {
-        state.apiDocs = action.payload;
+      fetchApiTypesList.fulfilled,
+      (state, action: PayloadAction<ApiDocsTypesList>) => {
+        state.apiTypesList = action.payload;
         state.isApiDocsFetching = false;
       },
     );
-    builder.addCase(fetchApiDocs.rejected, (state) => {
+    builder.addCase(fetchApiTypesList.rejected, (state, action) => {
+      state.apiDocsError =
+        typeof action.payload === 'string'
+          ? action.payload
+          : action.error.message ?? Keys.REQUEST_ERROR_UNKNOWN;
       state.isApiDocsFetching = false;
-      state.apiDocsError = 'error';
+    });
+    builder.addCase(fetchApiTypeDetailedInfo.pending, (state) => {
+      state.isApiDocsFetching = true;
+      state.apiDocsError = null;
+    });
+    builder.addCase(
+      fetchApiTypeDetailedInfo.fulfilled,
+      (state, action: PayloadAction<ApiDocsTypeInfo>) => {
+        state.apiDocsTypeDetailedInfo = action.payload;
+        state.isApiDocsFetching = false;
+      },
+    );
+    builder.addCase(fetchApiTypeDetailedInfo.rejected, (state, action) => {
+      state.apiDocsError =
+        typeof action.payload === 'string'
+          ? action.payload
+          : action.error.message ?? Keys.REQUEST_ERROR_UNKNOWN;
+      state.isApiDocsFetching = false;
     });
   },
 });
 
-// export const { clearAddingEndpointError } = apiDocsSlice.actions;
+export const { clearApiDocsTypeDetailedInfo } = apiDocsSlice.actions;
 
 export default apiDocsSlice.reducer;

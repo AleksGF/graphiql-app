@@ -14,52 +14,20 @@ export const defaultApiHeaders = {
 export const defaultApiMethod = 'POST';
 
 export const defaultApiQuery = `
-          {
+{
   __schema {
     queryType {
       name
     }
   }
 }
-        `;
+`;
 
 export const typesApiQuery = `
-          {
-            __schema {
-              types {
-                name
-              }
-            }
-          }
-        `;
-
-export const docsApiQuery = `
 {
   __schema {
     types {
       name
-      description
-      fields {
-        name
-        description
-        type {
-          name
-          kind
-          ofType {
-            name
-          }
-        }
-        args {
-          name
-          type {
-            name
-            kind
-            ofType {
-              name
-            }
-          }
-        }
-      }
     }
   }
 }
