@@ -60,7 +60,9 @@ export default function MainPage() {
             </Box>
             <EditorAccordion />
           </Box>
-          <Box sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}>
+          <Box
+            sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, flexGrow: 1, p: 1 }}
+          >
             <ResponseViewer />
           </Box>
         </Box>
