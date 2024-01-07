@@ -1,3 +1,4 @@
+import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import {
   EndpointEditor,
@@ -8,7 +9,6 @@ import {
   DocDrawer,
 } from '@/components';
 import { Colors } from '@/constants/colors';
-import { Container } from '@mui/material';
 
 const BLOCK_MIN_WIDTH = '260px';
 
@@ -55,12 +55,19 @@ export default function MainPage() {
               background: palette.background.default,
             })}
           >
-            <Box sx={{ flexGrow: '1' }}>
+            <Box sx={{ flexGrow: '1', position: 'relative' }}>
               <QueryEditor />
             </Box>
             <EditorAccordion />
           </Box>
-          <Box sx={{ width: 2 / 5, minWidth: BLOCK_MIN_WIDTH, p: 1 }}>
+          <Box
+            sx={{
+              width: 2 / 5,
+              minWidth: BLOCK_MIN_WIDTH,
+              flexGrow: 1,
+              p: 1,
+            }}
+          >
             <ResponseViewer />
           </Box>
         </Box>

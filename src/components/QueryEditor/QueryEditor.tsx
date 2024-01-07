@@ -31,7 +31,14 @@ export default function QueryEditor({ height = '100%' }: QueryEditorProps) {
 
   return (
     <CodeMirror
-      style={{ height: '100%' }}
+      style={{
+        height: '100%',
+        position: 'absolute',
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
+      }}
       value={content}
       height={height}
       theme={theme.palette.mode === 'dark' ? materialDark : materialLight}
