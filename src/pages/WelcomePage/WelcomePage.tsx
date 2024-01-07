@@ -135,10 +135,15 @@ export default function WelcomePage() {
               {LANGUAGES[language].TEXT_OUR_TEAM}
             </Typography>
             <Box
-              sx={{
+              sx={(theme) => ({
                 display: 'flex',
                 justifyContent: 'space-around',
-              }}
+                [theme.breakpoints.down('md')]: {
+                  flexWrap: 'wrap',
+                  gap: '2em',
+                  justifyContent: 'center',
+                },
+              })}
             >
               <ProfileCard
                 imgSrc={'placeholder-man-1.jpg'}

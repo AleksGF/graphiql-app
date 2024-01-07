@@ -120,13 +120,13 @@ const EN: Dictionary = {
     'This project is a final task of React Course by The Rolling Scopes School. It is an interactive in-browser GraphQL playground.',
   [Keys.TEXT_OUR_TEAM]: 'Our Team',
   [Keys.MEMBER_1_NAME]: 'Danil Bogdanov',
-  [Keys.MEMBER_1_OCCUPATION]: 'Lorem ipsum dolor sit',
+  [Keys.MEMBER_1_OCCUPATION]: 'RSSchool student',
   [Keys.MEMBER_1_DESC]:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+    'Completed the JS Frontend 2023Q1 course.Here can be any information you want after you are ready to pay for it. But before you can read Lorem ipsum dolor sit amet consectetur, adipisicing elit. And you can find more in the next section...',
   [Keys.MEMBER_2_NAME]: 'Oleksiy Chuguyenko',
-  [Keys.MEMBER_2_OCCUPATION]: 'Lorem ipsum dolor sit',
+  [Keys.MEMBER_2_OCCUPATION]: 'RSSchool student',
   [Keys.MEMBER_2_DESC]:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+    'Completed the JS Frontend 2023Q1 course.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
   [Keys.MEMBER_3_NAME]: 'Sergey Vergun',
   [Keys.MEMBER_3_OCCUPATION]: 'HPC System Administrator',
   [Keys.MEMBER_3_DESC]:
@@ -203,13 +203,13 @@ const RU: Dictionary = {
     'Этот проект является финальным заданием React Course от The Rolling Scopes School. Он представляет собой интерактивную GraphQL песочницу.',
   [Keys.TEXT_OUR_TEAM]: 'Наша команда',
   [Keys.MEMBER_1_NAME]: 'Данил Богданов',
-  [Keys.MEMBER_1_OCCUPATION]: 'Lorem ipsum dolor sit',
+  [Keys.MEMBER_1_OCCUPATION]: 'Студент RSSchool',
   [Keys.MEMBER_1_DESC]:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+    'Завершил курс JS Frontend 2023Q1. Здесь может быть любая информация по Вашему желанию, если Вы готовы заплатить за рекламные площади. А коль нет, то тут будет Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
   [Keys.MEMBER_2_NAME]: 'Алексей Чугуенко',
-  [Keys.MEMBER_2_OCCUPATION]: 'Lorem ipsum dolor sit',
+  [Keys.MEMBER_2_OCCUPATION]: 'Студент RSSchool',
   [Keys.MEMBER_2_DESC]:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+    'Завершил курс JS Frontend 2023Q1. Если Вы хотите прочитать продолжение Lorem ipsum, то здесь Вы найдете чуть больше этого прекрасного текста: Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
   [Keys.MEMBER_3_NAME]: 'Сергей Вергун',
   [Keys.MEMBER_3_OCCUPATION]: 'HPC Системный администратор',
   [Keys.MEMBER_3_DESC]:
