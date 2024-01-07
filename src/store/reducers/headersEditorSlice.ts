@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type HeadersEditorContent = Record<string, string> | null;
 
-interface HeadersEditorState {
+export interface HeadersEditorState {
   content: HeadersEditorContent;
 }
 

@@ -34,28 +34,42 @@ export const initialState: PreloadedState<RootState> = {
 };
 
 export const stateWithUser: PreloadedState<RootState> = {
+  ...initialState,
   user: { user: { email: 'test@test.com', id: 'some_id' }, isLoading: false },
+};
+
+export const stateWithOpenAccordion: PreloadedState<RootState> = {
+  ...initialState,
   appView: {
-    isDocDrawerOpen: false,
-    isEditorAccordionOpen: false,
-    activeEditorTab: 0,
+    ...initialState.appView,
+    isEditorAccordionOpen: true,
   },
+};
+
+export const stateWithOpenSecondTab: PreloadedState<RootState> = {
+  ...initialState,
+  appView: {
+    ...initialState.appView,
+    isEditorAccordionOpen: true,
+    activeEditorTab: 1,
+  },
+};
+
+export const stateWithEditEndpoint: PreloadedState<RootState> = {
+  ...initialState,
   endpointEditor: {
-    isEndpointEditMode: false,
-    newEndpointCurrentInput: '',
+    ...initialState.endpointEditor,
+    isEndpointEditMode: true,
+    newEndpointCurrentInput:
+      'https://swapi-graphql.netlify.app/.netlify/functions/index',
   },
-  queryEditor: { content: '' },
-  responseViewer: { content: '', isFetching: false, fetchError: null },
+};
+
+export const stateWithEndpointError: PreloadedState<RootState> = {
+  ...initialState,
   apiEndpoint: {
-    isApiFetching: false,
-    apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
-    apiAddingError: null,
-  },
-  headersEditor: {
-    content: null,
-  },
-  variablesEditor: {
-    content: null,
+    ...initialState.apiEndpoint,
+    apiAddingError: 'Error',
   },
   apiDocs: {
     isApiDocsFetching: false,

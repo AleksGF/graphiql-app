@@ -11,6 +11,7 @@ import MuiTooltip, {
 interface MenuItemsProps extends PropsWithChildren {
   clickHandler: VoidFunction;
   tooltip: string;
+  testId: string;
 }
 
 const Tooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -24,9 +25,14 @@ const Tooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-function MenuItem({ clickHandler, tooltip, children }: MenuItemsProps) {
+function MenuItem({ clickHandler, tooltip, testId, children }: MenuItemsProps) {
   return (
-    <ListItem disablePadding sx={{ display: 'block' }} onClick={clickHandler}>
+    <ListItem
+      disablePadding
+      sx={{ display: 'block' }}
+      onClick={clickHandler}
+      data-testid={testId}
+    >
       <ListItemButton
         sx={{
           minHeight: 40,

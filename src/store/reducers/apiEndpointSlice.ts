@@ -11,7 +11,7 @@ import { AxiosError } from 'axios';
 import { getErrorTextKey } from '@/utils/getErrorTextKey';
 import { Keys } from '@/constants/dictionaries';
 
-interface ApiEndpoint {
+export interface ApiEndpoint {
   isApiFetching: boolean;
   apiUrl: string;
   apiAddingError: string | null;

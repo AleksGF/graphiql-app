@@ -55,7 +55,10 @@ export default function MainPage() {
               background: palette.background.default,
             })}
           >
-            <Box sx={{ flexGrow: '1', position: 'relative' }}>
+            <Box
+              sx={{ flexGrow: '1', position: 'relative' }}
+              data-testid={'QueryEditor'}
+            >
               <QueryEditor />
             </Box>
             <EditorAccordion />
@@ -67,6 +70,7 @@ export default function MainPage() {
               flexGrow: 1,
               p: 1,
             }}
+            data-testid={'ResponseViewer'}
           >
             <ResponseViewer />
           </Box>
