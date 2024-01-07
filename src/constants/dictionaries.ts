@@ -130,7 +130,7 @@ const EN: Dictionary = {
   [Keys.MEMBER_3_NAME]: 'Sergey Vergun',
   [Keys.MEMBER_3_OCCUPATION]: 'HPC System Administrator',
   [Keys.MEMBER_3_DESC]:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+    'RS School student. Completed the JS Frontend 2023Q1 course. I\'m currently taking the React Course and planning to take the "Node.js" Course next. Cats lover ≽^•⩊•^≼',
   [Keys.BUTTON_SIGNIN]: 'Sign In',
   [Keys.BUTTON_SIGNUP]: 'Sign Up',
   [Keys.BUTTON_SIGNOUT]: 'Sign Out',
@@ -213,7 +213,7 @@ const RU: Dictionary = {
   [Keys.MEMBER_3_NAME]: 'Сергей Вергун',
   [Keys.MEMBER_3_OCCUPATION]: 'HPC Системный администратор',
   [Keys.MEMBER_3_DESC]:
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum vitae asperiores magni ex fugiat quibusdam dolore soluta quidem voluptates neque, odio earum facere rem sed omnis enim quas beatae consequatur.',
+    'Студент RS School. Завершил курс JS Frontend 2023Q1. Сейчас прохожу React Course и планирую пройти "Node.js" Course. Люблю кошек ≽^•⩊•^≼',
   [Keys.BUTTON_SIGNIN]: 'Войти',
   [Keys.BUTTON_SIGNUP]: 'Регистрация',
   [Keys.BUTTON_SIGNOUT]: 'Выйти',
