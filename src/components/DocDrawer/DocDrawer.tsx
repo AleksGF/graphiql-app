@@ -78,6 +78,7 @@ function Loading() {
         alignItems: 'center',
         justifyContent: 'center',
       }}
+      data-testid={'DocDrawerLoader'}
     >
       <CircularProgress />
     </Box>
