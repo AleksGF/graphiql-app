@@ -6,7 +6,8 @@ import queryEditorReducer from './reducers/queryEditorSlice';
 import responseViewerReducer from './reducers/responseViewSlice';
 import apiEndpointReducer from './reducers/apiEndpointSlice';
 import headersEditorReducer from './reducers/headersEditorSlice';
-import variablesEditorReducer from './reducers/headersEditorSlice';
+import variablesEditorReducer from './reducers/variablesEditorSlice';
+import apiDocsReducer from './reducers/apiDocsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     apiEndpoint: apiEndpointReducer,
     headersEditor: headersEditorReducer,
     variablesEditor: variablesEditorReducer,
+    apiDocs: apiDocsReducer,
   },
 });
 

@@ -11,9 +11,10 @@ const AppStyled = styled('div')({
 
 export default function Layout() {
   const { isLoading } = useAppSelector((state) => state.user);
+  const { isApiFetching } = useAppSelector((state) => state.apiEndpoint);
+  const { isFetching } = useAppSelector((state) => state.responseViewer);
 
-  //TODO Add cases when Loader is shown
-  const isLoaderOpen = isLoading;
+  const isLoaderOpen = isLoading || isApiFetching || isFetching;
 
   return (
     <AppStyled className="App">
