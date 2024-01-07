@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useColorModeContext, useLanguageContext } from '@/context';
 import { LANGUAGES } from '@/constants/dictionaries';
 import { DarkMode, Language, LightMode } from '@mui/icons-material';
@@ -16,10 +16,42 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { RoutePaths } from '@/routes/routes';
 import { useAppSelector } from '@/hooks/hooks';
 
-const HeaderStyled = styled('header')({
-  display: 'flex',
-  padding: '1em',
-  justifyContent: 'space-between',
+const STICKY_SCROLL_VALUE = 150;
+
+interface HeaderProps {
+  sticky: boolean;
+}
+
+const HeaderStyled = styled('header', {
+  shouldForwardProp: (prop) => prop !== 'sticky',
+})<HeaderProps>(({ sticky }) => {
+  return sticky
+    ? {
+        display: 'flex',
+        padding: '1em',
+        justifyContent: 'space-between',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 999,
+        animation: '0.3s linear 0s 1 alternate slide',
+        '@keyframes slide': {
+          '0%': {
+            opacity: 0,
+            transform: 'translateY(-200%)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
+      }
+    : {
+        display: 'flex',
+        padding: '1em',
+        justifyContent: 'space-between',
+      };
 });
 
 export default function Header() {
@@ -31,6 +63,21 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = !!anchorEl;
 
+  const [sticky, setSticky] = useState<boolean>(false);
+
+  const isSticky = () => {
+    const scrollTop = window.scrollY;
+    const stickyClass = scrollTop >= STICKY_SCROLL_VALUE;
+    setSticky(stickyClass);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', isSticky);
+    return () => {
+      window.removeEventListener('scroll', isSticky);
+    };
+  }, []);
+
   const handleLangClick = (
     event: React.MouseEvent<HTMLButtonElement>,
   ): void => {
@@ -41,10 +88,9 @@ export default function Header() {
     setAnchorEl(null);
   };
 
-  // TODO Make it sticky with animation
   // TODO SignOut
   return (
-    <HeaderStyled>
+    <HeaderStyled sticky={sticky}>
       <Logo href={RoutePaths.IndexPage}></Logo>
 
       <Typography component={'div'} sx={{ display: 'flex', width: 'auto' }}>
