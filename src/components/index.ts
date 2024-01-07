@@ -4,7 +4,6 @@ import Logo from './Logo/Logo';
 import Footer from './Footer/Footer';
 import RsLogo from './RsLogo/RsLogo';
 import ProfileCard from './ProfileCard/ProfileCard';
-import ApiDocs from './ApiDocs/ApiDocs';
 import EndpointEditor from '@/components/EndpointEditor/EndpointEditor';
 import EditorMenu from '@/components/EditorMenu/EditorMenu';
 import QueryEditor from './QueryEditor/QueryEditor';
@@ -26,7 +25,6 @@ export {
   RsLogo,
   ProfileCard,
   EditorMenu,
-  ApiDocs,
   EndpointEditor,
   QueryEditor,
   ResponseViewer,

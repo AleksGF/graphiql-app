@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useColorModeContext, useLanguageContext } from '@/context';
 import { Langs, LANGUAGES } from '@/constants/dictionaries';
 import { DarkMode, Language, LightMode } from '@mui/icons-material';
@@ -17,20 +17,46 @@ import { RoutePaths } from '@/routes/routes';
 import { useAppSelector } from '@/hooks/hooks';
 import { logOut } from '@/services/authService';
 
-const HeaderStyled = styled('header')(({ theme: { breakpoints } }) => ({
-  display: 'flex',
-  padding: '1em',
-  justifyContent: 'space-between',
-  [breakpoints.down('sm')]: {
-    flexWrap: 'wrap',
-  },
-}));
+type HeaderProps = {
+  isScrolled: boolean;
+};
+
+const HeaderStyled = styled('header')<HeaderProps>(
+  ({ isScrolled, theme: { breakpoints } }) => ({
+    position: 'sticky',
+    top: 0,
+    zIndex: '1',
+    display: 'flex',
+    padding: '1em',
+    justifyContent: 'space-between',
+    filter: isScrolled ? 'grayscale(50%)' : 'none',
+    backdropFilter: 'blur(16px)',
+    transition: 'all 0.3s',
+    animation: isScrolled ? 'slideDown 0.35s ease-out' : 'none',
+    [breakpoints.down('sm')]: {
+      flexWrap: 'wrap',
+    },
+    '&:hover': {
+      filter: 'none',
+    },
+    '@keyframes slideDown': {
+      from: {
+        transform: 'translateY(-100%)',
+      },
+      to: {
+        transform: 'translateY(0)',
+      },
+    },
+  }),
+);
 
 export default function Header() {
   const theme = useTheme();
   const colorMode = useColorModeContext();
   const { user } = useAppSelector((state) => state.user);
   const { language, setLanguage } = useLanguageContext();
+
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = !!anchorEl;
@@ -49,9 +75,24 @@ export default function Header() {
     await logOut();
   };
 
-  // TODO Make it sticky with animation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <HeaderStyled>
+    <HeaderStyled isScrolled={isScrolled}>
       <Logo href={RoutePaths.IndexPage}></Logo>
 
       <Typography component={'div'} sx={{ display: 'flex', width: 'auto' }}>

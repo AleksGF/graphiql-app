@@ -14,21 +14,21 @@ export const defaultApiHeaders = {
 export const defaultApiMethod = 'POST';
 
 export const defaultApiQuery = `
-          {
+{
   __schema {
     queryType {
       name
     }
   }
 }
-        `;
+`;
 
 export const typesApiQuery = `
-          {
-            __schema {
-              types {
-                name
-              }
-            }
-          }
-        `;
+{
+  __schema {
+    types {
+      name
+    }
+  }
+}
+`;
